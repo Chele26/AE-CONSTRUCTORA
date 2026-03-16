@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AE Constructora S.A.S. de C.V. | Acabados de pisos en concreto</title>
+    <meta name="description" content="Especialistas en acabados, pulido, estampado y mantenimiento de pisos de concreto en El Salvador.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo-constructora.png">
+    <link rel="shortcut icon" href="assets/logo-constructora.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo-constructora.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="logo">
+                <img src="assets/Logo.png" alt="AE Constructora Logo">
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                <li><a href="#clientes" class="nav-link">Clientes</a></li>
+                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <div class="floor-animation-container">
+            <div class="floor-surface">
+                <div class="floor-texture"></div>
+                <div class="polished-area"></div>
+
+                <div class="polisher">
+                    <div class="polisher-body">
+                        <div class="polisher-handle"></div>
+                        <div class="polisher-motor"></div>
+                        <div class="polisher-pad"></div>
+                        <div class="polisher-shadow"></div>
+                    </div>
+                </div>
+
+                <div class="sparkles">
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                </div>
+
+                <div class="floor-particles">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Acabados de concreto con <span class="highlight">nivel premium</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Más de <strong>10 años de experiencia</strong>, más de <strong>200 proyectos realizados</strong> y
+                presencia a nivel nacional en soluciones de acabado, pulido y tratamiento profesional de pisos de concreto.
+            </p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Años de experiencia</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Proyectos realizados</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Presencia nacional</span>
+                </div>
+            </div>
+
+            <a href="#proyectos" class="cta-button">Ver proyectos</a>
+
+            <div class="hero-social">
+                <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://wa.me/50375003155" target="_blank" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="proyectos">
+        <div class="projects-bg-blur"></div>
+
+        <div class="container projects-content">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Proyectos</h2>
+                <p class="section-subtitle">
+                    Obras ejecutadas en sectores industriales, comerciales, institucionales y residenciales en todo El Salvador
+                </p>
+            </div>
+
+            <div class="projects-filter" id="projectsFilter"></div>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
+
+    <section class="clients" id="clientes">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Clientes que confían en nosotros</h2>
+                <p class="section-subtitle">
+                    Presencia real en proyectos de alto nivel, sector comercial, industrial e interés social
+                </p>
+            </div>
+
+            <div class="clients-summary">
+                <div class="client-summary-card reveal-up">
+                    <span>+200</span>
+                    <p>Proyectos ejecutados</p>
+                </div>
+                <div class="client-summary-card reveal-up delay-1">
+                    <span>+10</span>
+                    <p>Años de experiencia</p>
+                </div>
+                <div class="client-summary-card reveal-up delay-2">
+                    <span>Nacional</span>
+                    <p>Presencia en El Salvador</p>
+                </div>
+            </div>
+
+            <div class="featured-clients">
+                <div class="client-feature reveal-up">
+                    <i class="bi bi-shop"></i>
+                    <h3>McDonald's</h3>
+                    <p>Proyecto comercial</p>
+                </div>
+
+                <div class="client-feature reveal-up delay-1">
+                    <i class="bi bi-airplane"></i>
+                    <h3>Aeropuerto Nacional</h3>
+                    <p>Infraestructura</p>
+                </div>
+
+                <div class="client-feature reveal-up delay-2">
+                    <i class="bi bi-building"></i>
+                    <h3>Plaza Mundo</h3>
+                    <p>Desarrollo comercial</p>
+                </div>
+
+                <div class="client-feature reveal-up delay-3">
+                    <i class="bi bi-houses"></i>
+                    <h3>Puertas del Alma</h3>
+                    <p>Interés social / residencial</p>
+                </div>
+
+                <div class="client-feature reveal-up delay-4">
+                    <i class="bi bi-building-gear"></i>
+                    <h3>DISA / Fortaleza</h3>
+                    <p>Sector industrial</p>
+                </div>
+            </div>
+
+            <div class="clients-toggle">
+                <button class="secondary-button" id="toggleClientsBtn">Ver todos los clientes</button>
+            </div>
+
+            <div class="clients-grid clients-grid-hidden" id="allClientsGrid">
+                <div class="client-pill">FHC INGENIEROS S.A. DE C.V.</div>
+                <div class="client-pill">ALAS CONSTRUCTORA S.A. DE C.V.</div>
+                <div class="client-pill">DIALCA S.A. DE C.V.</div>
+                <div class="client-pill">IMPORTADORA RAMIREZ S.A DE C.V.</div>
+                <div class="client-pill">DIHARE S.A. DE C.V.</div>
+                <div class="client-pill">CONSTRUCCIONES EN CONCRETO Y ACERO, S.A. DE C.V.</div>
+                <div class="client-pill">INVERSIONES MONGE CARTAGENA Y ASOCIADOS S.A. DE C.V.</div>
+                <div class="client-pill">ELECNOR S.A. SUCURSAL EL SALVADOR</div>
+                <div class="client-pill">ESTUDIOS TECNICOS Y ECONOMICOS S.A. DE C.V.</div>
+                <div class="client-pill">ALPHA INVERSIONES S.A. DE C.V.</div>
+                <div class="client-pill">PRISMA DE CENTRO AMERICA S.A. DE C.V.</div>
+                <div class="client-pill">GLOBAL IMPORT SPICES, S.A. DE C.V.</div>
+                <div class="client-pill">JC CORTEZ S.A. DE C.V.</div>
+                <div class="client-pill">DISA S.A. DE C.V.</div>
+                <div class="client-pill">CONTRUCTORA NABLA S.A. DE C.V.</div>
+                <div class="client-pill">KGI CONSTRUCTORES S.A. DE C.V.</div>
+                <div class="client-pill">SOLUCIONES DE INGENIERIA</div>
+                <div class="client-pill">V.K. S.A. DE C.V.</div>
+                <div class="client-pill">LOPEZ HURTADO S.A. DE C.V.</div>
+                <div class="client-pill">QUALICONS S.A. DE C.V.</div>
+                <div class="client-pill">JABES Multiservicios</div>
+                <div class="client-pill">H J Construcción</div>
+                <div class="client-pill">CONSTRUCTORA LEON</div>
+                <div class="client-pill">MASS CONSTRUCTORA</div>
+                <div class="client-pill">GRUPO PROYECTOS MULTIPLES DE CONSTRUCCION</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-header light">
+                <h2 class="section-title">Servicios</h2>
+                <p class="section-subtitle">Soluciones profesionales para acabados de concreto</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M12 3v18"></path>
+                            <path d="M3 12h18"></path>
+                        </svg>
+                    </div>
+                    <h3>Pulido de Concreto</h3>
+                    <p>Acabados de alto brillo con excelente presentación visual y gran resistencia al uso constante.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <rect x="4" y="4" width="16" height="16"></rect>
+                            <path d="M4 10h16"></path>
+                        </svg>
+                    </div>
+                    <h3>Semi Pulido</h3>
+                    <p>Superficies elegantes y funcionales, ideales para áreas con tráfico medio y alto.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <path d="M4 18l8-12 8 12"></path>
+                        </svg>
+                    </div>
+                    <h3>Acabado Rústico</h3>
+                    <p>Texturas antideslizantes y seguras para exteriores, rampas y zonas industriales.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <path d="M4 12h16"></path>
+                            <path d="M7 8l-3 4 3 4"></path>
+                            <path d="M17 8l3 4-3 4"></path>
+                        </svg>
+                    </div>
+                    <h3>Rayado y Juntas</h3>
+                    <p>Definición técnica de líneas, juntas y cortes para mejor comportamiento del concreto.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <path d="M5 19h14"></path>
+                            <path d="M7 16h10"></path>
+                            <path d="M9 13h6"></path>
+                        </svg>
+                    </div>
+                    <h3>Desbaste</h3>
+                    <p>Nivelación y preparación de superficies para restauración o aplicación de nuevos acabados.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5-5-2.6-5 2.6 1-5.5-4-3.9 5.5-.8L12 3z"></path>
+                        </svg>
+                    </div>
+                    <h3>Encerado y Mantenimiento</h3>
+                    <p>Protección y mantenimiento para conservar brillo, limpieza y durabilidad de cada proyecto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Conversemos sobre su proyecto</h2>
+                    <p>Estamos listos para atender proyectos industriales, comerciales e institucionales.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="bi bi-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp</strong><br>
+                                +503 7500-3155
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="bi bi-envelope"></i>
+                            <div>
+                                <strong>Correo</strong><br>
+                                kevinmolina252627@gmail.com
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <h4>Redes sociales</h4>
+                        <div class="social-row">
+                            <a href="#" class="social-circle"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-circle"><i class="bi bi-instagram"></i></a>
+                            <a href="https://wa.me/50375003155" target="_blank" class="social-circle"><i class="bi bi-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Cuéntenos sobre su proyecto" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/Logo.png" alt="AE Constructora">
+                    <p>Especialistas en acabados de pisos en concreto con más de 10 años de experiencia, más de 200 proyectos realizados y cobertura nacional.</p>
+
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="https://wa.me/50375003155" target="_blank" class="footer-social-link"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#clientes">Clientes</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4>Contacto directo</h4>
+                    <p>Escríbanos y con gusto le atenderemos.</p>
+                    <form class="newsletter-form">
+                        <input type="text" placeholder="Su correo o teléfono">
+                        <button type="button">Enviar</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 AE Constructora S.A.S. de C.V. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
