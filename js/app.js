@@ -366,7 +366,7 @@ function renderProjects() {
     const filteredProjects = getFilteredProjects();
 
     projectsGrid.innerHTML = filteredProjects.map((project, projectIndex) => `
-        <article class="project-card">
+        <article class="project-card reveal-card delay-${projectIndex % 4}">
             <div class="project-image">
                 <div class="project-slides" id="slides-${projectIndex}">
                     ${project.images.map((image, imageIndex) => `
@@ -406,6 +406,7 @@ function renderProjects() {
 
     initProjectArrows(filteredProjects);
     startAllSliders(filteredProjects);
+    revealProjectCards();
 }
 
 function initProjectArrows(filteredProjects) {
@@ -497,8 +498,22 @@ function revealOnScroll() {
     });
 }
 
+function revealProjectCards() {
+    const projectCards = document.querySelectorAll(".project-card.reveal-card");
+
+    projectCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+            card.classList.add("visible");
+        }
+    });
+}
+
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
+
+window.addEventListener("scroll", revealProjectCards);
+window.addEventListener("load", revealProjectCards);
 
 /* Contact form */
 document.getElementById("contactForm").addEventListener("submit", function (e) {
@@ -525,3 +540,4 @@ ${message}`;
 renderFilters();
 renderProjects();
 revealOnScroll();
+revealProjectCards();
