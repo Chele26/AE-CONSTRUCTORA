@@ -64,14 +64,12 @@ img {
 .navbar.scrolled {
     padding: 0.65rem 0;
     box-shadow: 0 8px 24px rgba(0,0,0,0.22);
-
     background: linear-gradient(
         to bottom,
         rgba(25, 35, 60, 0.95),
         rgba(10, 15, 28, 0.95)
     );
 }
-
 
 .nav-container {
     max-width: 1280px;
@@ -80,12 +78,109 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1.5rem;
+}
+
+/* LOGO NUEVO */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    text-decoration: none;
+    position: relative;
 }
 
 .logo img {
     height: 60px;
     width: auto;
     transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.logo-text-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 60px;
+    overflow: hidden;
+}
+
+.logo-text {
+    position: relative;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.polished-text {
+    color: #87ceeb;
+    background: linear-gradient(
+        110deg,
+        #bff3ff 0%,
+        #87ceeb 20%,
+        #ecfeff 35%,
+        #7fd6f7 48%,
+        #ffffff 56%,
+        #7ecff0 68%,
+        #c7f5ff 82%,
+        #87ceeb 100%
+    );
+    background-size: 220% auto;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation:
+        polishedTextFlow 5.5s linear infinite,
+        polishedGlow 3.2s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.18));
+    text-shadow:
+        0 0 6px rgba(255,255,255,0.22),
+        0 0 14px rgba(255,255,255,0.10);
+}
+
+.logo-text-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -6px -10px;
+    border-radius: 14px;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.05) 30%,
+        rgba(135,206,235,0.08) 60%,
+        rgba(255,255,255,0) 100%
+    );
+    opacity: 0.8;
+    pointer-events: none;
+    animation: logoPlateGlow 4s ease-in-out infinite;
+}
+
+.logo-text-shine {
+    position: absolute;
+    top: -20%;
+    left: -18%;
+    width: 28%;
+    height: 140%;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.05) 25%,
+        rgba(255,255,255,0.55) 50%,
+        rgba(255,255,255,0.08) 70%,
+        rgba(255,255,255,0) 100%
+    );
+    transform: skewX(-20deg);
+    filter: blur(2px);
+    pointer-events: none;
+    animation: logoSweep 3.8s ease-in-out infinite;
+    mix-blend-mode: screen;
 }
 
 .nav-menu {
@@ -957,11 +1052,24 @@ img {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2rem;
     position: relative;
     z-index: 1;
 }
+
+@media (max-width: 968px) {
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 .service-card {
     text-align: center;
@@ -1316,6 +1424,58 @@ img {
     }
 }
 
+/* ANIMACIONES DEL TEXTO DEL LOGO */
+@keyframes polishedTextFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 220% 50%;
+    }
+}
+
+@keyframes polishedGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 4px rgba(255,255,255,0.14));
+        transform: translateY(0);
+    }
+    50% {
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.24));
+        transform: translateY(-1px);
+    }
+}
+
+@keyframes logoSweep {
+    0% {
+        left: -22%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.2;
+    }
+    45% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0.35;
+    }
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes logoPlateGlow {
+    0%, 100% {
+        opacity: 0.45;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+}
+
 /* Responsive */
 @media (max-width: 1100px) {
     .featured-clients {
@@ -1355,6 +1515,19 @@ img {
 
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .logo {
+        gap: 0.7rem;
+    }
+
+    .logo img {
+        height: 54px;
+    }
+
+    .logo-text {
+        font-size: 1.15rem;
+        letter-spacing: 0.12em;
     }
 
     .hero-title {
@@ -1441,5 +1614,25 @@ img {
 
     .featured-clients {
         grid-template-columns: 1fr;
+    }
+
+    .logo {
+        gap: 0.55rem;
+        max-width: 75%;
+    }
+
+    .logo img {
+        height: 46px;
+    }
+
+    .logo-text-wrap {
+        min-height: auto;
+    }
+
+    .logo-text {
+        font-size: 0.86rem;
+        letter-spacing: 0.09em;
+        white-space: normal;
+        line-height: 1.1;
     }
 }

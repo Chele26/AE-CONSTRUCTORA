@@ -1,143 +1,2380 @@
-assets
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AE Constructora S.A.S. de C.V. | Acabados de pisos en concreto</title>
+    <meta name="description" content="Especialistas en acabados, pulido, estampado y mantenimiento de pisos de concreto en El Salvador.">
 
-├── Aeropuerto_Nacional_Nueva_Etapa
-│   ├── AN1.jpg
-│   ├── AN2.jpg
-│   ├── AN3.jpg
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo-constructora.png">
+    <link rel="shortcut icon" href="assets/logo-constructora.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo-constructora.png">
 
-├── Parque_Cuscatlan
-│   ├── PC1.jpg
-│   ├── PC2.jpg
-│   ├── PC3.jpg
-│   ├── PC4.jpg
-│   ├── PC5.jpg
-│   ├── PC6.jpg
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-├── Plaza_Mundo_Apopa
-│   ├── PM1.jpg
-│   ├── PM2.jpg
-│   ├── PM3.jpg
-│   ├── PM4.jpg
-│   ├── PM5.jpg
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-├── DHIARE_Chalatenango
-│   ├── DC1.jpg
-│   ├── DC2.jpg
-│   ├── DC3.jpg
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
 
-├── DISA_Acajutla_Cementera_Fortaleza
-│   ├── DA1.jpg
-│   ├── DA2.jpg
-│   ├── DA3.jpg
-│   ├── DA4.jpg
-│   ├── DA5.jpg
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="logo">
+                <img src="assets/Logo.png" alt="AE Constructora Logo">
+            </a>
 
-├── Global_Import_Spices_Tutunichapa
-│   ├── GI1.jpg
-│   ├── GI2.jpg
-│   ├── GI3.jpg
-│   ├── GI4.jpg
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                <li><a href="#clientes" class="nav-link">Clientes</a></li>
+                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
 
-├── Terminal_Buses_Plaza_Nuevo_Amanecer
-│   ├── TB1.jpg
-│   ├── TB2.jpg
-│   ├── TB3.jpg
-│   ├── TB4.jpg
-│   ├── TB5.jpg
+            <div class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
-├── Soluciones_Ingenieria_Imprenta
-│   ├── SI1.jpg
-│   ├── SI2.jpg
-│   ├── SI3.jpg
-│   ├── SI4.jpg
-│   ├── SI5.jpg
+    <section class="hero" id="inicio">
+        <div class="floor-animation-container">
+            <div class="floor-surface">
+                <div class="floor-texture"></div>
+                <div class="polished-area"></div>
 
-├── Global_Import_Spices_Quezaltepeque
-│   ├── GQ1.jpg
-│   ├── GQ2.jpg
-│   ├── GQ3.jpg
-│   ├── GQ4.jpg
-│   ├── GQ5.jpg
+                <div class="polisher">
+                    <div class="polisher-body">
+                        <div class="polisher-handle"></div>
+                        <div class="polisher-motor"></div>
+                        <div class="polisher-pad"></div>
+                        <div class="polisher-shadow"></div>
+                    </div>
+                </div>
 
-├── McDonalds_Aguilares
-│   ├── MA1.jpg
-│   ├── MA2.jpg
+                <div class="sparkles">
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                </div>
 
-├── Bimbo_Merliot
-│   ├── BM1.jpg
-│   ├── BM2.jpg
-│   ├── BM3.jpg
-│   ├── BM4.jpg
+                <div class="floor-particles">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
 
-├── Cortimetal
-│   ├── CO1.jpg
-│   ├── CO2.jpg
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Acabados de concreto con <span class="highlight">nivel premium</span>
+            </h1>
 
-├── Ingenio_El_Angel
-│   ├── IE1.jpg
-│   ├── IE2.jpg
-│   ├── IE3.jpg
+            <p class="hero-subtitle">
+                Más de <strong>10 años de experiencia</strong>, más de <strong>200 proyectos realizados</strong> y
+                presencia a nivel nacional en soluciones de acabado, pulido y tratamiento profesional de pisos de concreto.
+            </p>
 
-├── Seminario_Mayor_San_Jose
-│   ├── SM1.jpg
-│   ├── SM2.jpg
-│   ├── SM3.jpg
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Años de experiencia</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Proyectos realizados</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Presencia nacional</span>
+                </div>
+            </div>
 
-├── Puertas_Del_Alma_III
-│   ├── PA1.jpg
-│   ├── PA2.jpg
-│   ├── PA3.jpg
+            <a href="#proyectos" class="cta-button">Ver proyectos</a>
 
-├── Mercado_Chalchuapa
-│   ├── MC1.jpg
-│   ├── MC2.jpg
+            <div class="hero-social">
+                <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://wa.me/50375003155" target="_blank" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
 
-├── Torre_Puertas_Del_Alma
-│   ├── TP1.jpg
-│   ├── TP2.jpg
+    <section class="projects" id="proyectos">
+        <div class="projects-bg-blur"></div>
 
-├── Ingenio_La_Magdalena
-│   ├── IM1.jpg
-│   ├── IM2.jpg
-│   ├── IM3.jpg
+        <div class="container projects-content">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Proyectos</h2>
+                <p class="section-subtitle">
+                    Obras ejecutadas en sectores industriales, comerciales, institucionales y residenciales en todo El Salvador
+                </p>
+            </div>
 
-├── Bodegas_VIDRI_Nejapa
-│   ├── BV1.jpg
-│   ├── BV2.jpg
-│   ├── BV3.jpg
+            <div class="projects-filter" id="projectsFilter"></div>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
 
-├── Centro_Plastico_Ilopango
-│   ├── CP1.jpg
-│   ├── CP2.jpg
+    <section class="clients" id="clientes">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Clientes que confían en nosotros</h2>
+                <p class="section-subtitle">
+                    Presencia real en proyectos de alto nivel, sector comercial, industrial e interés social
+                </p>
+            </div>
 
-├── Plaza_Mundo_Bodegas
-│   ├── PMB1.jpg
-│   ├── PMB2.jpg
+            <div class="clients-summary">
+                <div class="client-summary-card reveal-up">
+                    <span>+200</span>
+                    <p>Proyectos ejecutados</p>
+                </div>
+                <div class="client-summary-card reveal-up delay-1">
+                    <span>+10</span>
+                    <p>Años de experiencia</p>
+                </div>
+                <div class="client-summary-card reveal-up delay-2">
+                    <span>Nacional</span>
+                    <p>Presencia en El Salvador</p>
+                </div>
+            </div>
 
-├── Torre_141
-│   ├── T141_1.jpg
-│   ├── T141_2.jpg
-│   ├── T141_3.jpg
+            <div class="featured-clients">
+                <div class="client-feature reveal-up">
+                    <i class="bi bi-shop"></i>
+                    <h3>McDonald's</h3>
+                    <p>Proyecto comercial</p>
+                </div>
 
-├── Planta_El_Angel_CASW
-│   ├── PE1.jpg
-│   ├── PE2.jpg
+                <div class="client-feature reveal-up delay-1">
+                    <i class="bi bi-airplane"></i>
+                    <h3>Aeropuerto Nacional</h3>
+                    <p>Infraestructura</p>
+                </div>
 
-├── Chalatenango_Rampa
-│   ├── CR1.jpg
+                <div class="client-feature reveal-up delay-2">
+                    <i class="bi bi-building"></i>
+                    <h3>Plaza Mundo</h3>
+                    <p>Desarrollo comercial</p>
+                </div>
 
-├── Garden_Tower_San_Marcos
-│   ├── GT1.jpg
-│   ├── GT2.jpg
-│   ├── GT3.jpg
+                <div class="client-feature reveal-up delay-3">
+                    <i class="bi bi-houses"></i>
+                    <h3>Puertas del Alma</h3>
+                    <p>Interés social / residencial</p>
+                </div>
 
-├── Cancha_Multiusos_San_Rafael
-│   ├── CM1.jpg
-│   ├── CM2.jpg
-│   ├── CM3.jpg
+                <div class="client-feature reveal-up delay-4">
+                    <i class="bi bi-building-gear"></i>
+                    <h3>DISA / Fortaleza</h3>
+                    <p>Sector industrial</p>
+                </div>
+            </div>
 
-└── Bodegas_El_Sitio_San_Miguel
-    ├── BS1.jpg
-    ├── BS2.jpg
-    ├── BS3.jpg
-    ├── BS4.jpg
+            <div class="clients-toggle">
+                <button class="secondary-button" id="toggleClientsBtn">Ver todos los clientes</button>
+            </div>
+
+            <div class="clients-grid clients-grid-hidden" id="allClientsGrid">
+                <div class="client-pill">FHC INGENIEROS S.A. DE C.V.</div>
+                <div class="client-pill">ALAS CONSTRUCTORA S.A. DE C.V.</div>
+                <div class="client-pill">DIALCA S.A. DE C.V.</div>
+                <div class="client-pill">IMPORTADORA RAMIREZ S.A DE C.V.</div>
+                <div class="client-pill">DIHARE S.A. DE C.V.</div>
+                <div class="client-pill">CONSTRUCCIONES EN CONCRETO Y ACERO, S.A. DE C.V.</div>
+                <div class="client-pill">INVERSIONES MONGE CARTAGENA Y ASOCIADOS S.A. DE C.V.</div>
+                <div class="client-pill">ELECNOR S.A. SUCURSAL EL SALVADOR</div>
+                <div class="client-pill">ESTUDIOS TECNICOS Y ECONOMICOS S.A. DE C.V.</div>
+                <div class="client-pill">ALPHA INVERSIONES S.A. DE C.V.</div>
+                <div class="client-pill">PRISMA DE CENTRO AMERICA S.A. DE C.V.</div>
+                <div class="client-pill">GLOBAL IMPORT SPICES, S.A. DE C.V.</div>
+                <div class="client-pill">JC CORTEZ S.A. DE C.V.</div>
+                <div class="client-pill">DISA S.A. DE C.V.</div>
+                <div class="client-pill">CONTRUCTORA NABLA S.A. DE C.V.</div>
+                <div class="client-pill">KGI CONSTRUCTORES S.A. DE C.V.</div>
+                <div class="client-pill">SOLUCIONES DE INGENIERIA</div>
+                <div class="client-pill">V.K. S.A. DE C.V.</div>
+                <div class="client-pill">LOPEZ HURTADO S.A. DE C.V.</div>
+                <div class="client-pill">QUALICONS S.A. DE C.V.</div>
+                <div class="client-pill">JABES Multiservicios</div>
+                <div class="client-pill">H J Construcción</div>
+                <div class="client-pill">CONSTRUCTORA LEON</div>
+                <div class="client-pill">MASS CONSTRUCTORA</div>
+                <div class="client-pill">GRUPO PROYECTOS MULTIPLES DE CONSTRUCCION</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-header light">
+                <h2 class="section-title">Servicios</h2>
+                <p class="section-subtitle">Soluciones profesionales para acabados de concreto</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M12 3v18"></path>
+                            <path d="M3 12h18"></path>
+                        </svg>
+                    </div>
+                    <h3>Pulido de Concreto</h3>
+                    <p>Acabados de alto brillo con excelente presentación visual y gran resistencia al uso constante.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <rect x="4" y="4" width="16" height="16"></rect>
+                            <path d="M4 10h16"></path>
+                        </svg>
+                    </div>
+                    <h3>Semi Pulido</h3>
+                    <p>Superficies elegantes y funcionales, ideales para áreas con tráfico medio y alto.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <path d="M4 18l8-12 8 12"></path>
+                        </svg>
+                    </div>
+                    <h3>Acabado Rústico</h3>
+                    <p>Texturas antideslizantes y seguras para exteriores, rampas y zonas industriales.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <path d="M4 12h16"></path>
+                            <path d="M7 8l-3 4 3 4"></path>
+                            <path d="M17 8l3 4-3 4"></path>
+                        </svg>
+                    </div>
+                    <h3>Rayado y Juntas</h3>
+                    <p>Definición técnica de líneas, juntas y cortes para mejor comportamiento del concreto.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <path d="M5 19h14"></path>
+                            <path d="M7 16h10"></path>
+                            <path d="M9 13h6"></path>
+                        </svg>
+                    </div>
+                    <h3>Desbaste</h3>
+                    <p>Nivelación y preparación de superficies para restauración o aplicación de nuevos acabados.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                            <path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5-5-2.6-5 2.6 1-5.5-4-3.9 5.5-.8L12 3z"></path>
+                        </svg>
+                    </div>
+                    <h3>Encerado y Mantenimiento</h3>
+                    <p>Protección y mantenimiento para conservar brillo, limpieza y durabilidad de cada proyecto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Conversemos sobre su proyecto</h2>
+                    <p>Estamos listos para atender proyectos industriales, comerciales e institucionales.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="bi bi-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp</strong><br>
+                                +503 7500-3155
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="bi bi-envelope"></i>
+                            <div>
+                                <strong>Correo</strong><br>
+                                kevinmolina252627@gmail.com
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <h4>Redes sociales</h4>
+                        <div class="social-row">
+                            <a href="#" class="social-circle"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-circle"><i class="bi bi-instagram"></i></a>
+                            <a href="https://wa.me/50375003155" target="_blank" class="social-circle"><i class="bi bi-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Cuéntenos sobre su proyecto" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/Logo.png" alt="AE Constructora">
+                    <p>Especialistas en acabados de pisos en concreto con más de 10 años de experiencia, más de 200 proyectos realizados y cobertura nacional.</p>
+
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="https://wa.me/50375003155" target="_blank" class="footer-social-link"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#clientes">Clientes</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4>Contacto directo</h4>
+                    <p>Escríbanos y con gusto le atenderemos.</p>
+                    <form class="newsletter-form">
+                        <input type="text" placeholder="Su correo o teléfono">
+                        <button type="button">Enviar</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 AE Constructora S.A.S. de C.V. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+
+
+:root {
+    --primary-color: #0f172a;
+    --secondary-color: #d4af37;
+    --secondary-dark: #b8932f;
+    --accent-color: #1e3a5f;
+    --accent-soft: #2b4c7e;
+    --text-light: #ffffff;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --bg-light: #f8fafc;
+    --bg-soft: #eef2f7;
+    --surface-dark: #111827;
+    --surface-black: #0a0f1c;
+    --border-soft: rgba(255,255,255,0.08);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-soft: 0 8px 30px rgba(0,0,0,0.12);
+    --shadow-medium: 0 15px 40px rgba(0,0,0,0.18);
+    --shadow-strong: 0 25px 60px rgba(0,0,0,0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    background: #fff;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 15, 28, 0.88);
+    backdrop-filter: blur(14px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+}
+
+.navbar.scrolled {
+    padding: 0.65rem 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+
+    background: linear-gradient(
+        to bottom,
+        rgba(25, 35, 60, 0.95),
+        rgba(10, 15, 28, 0.95)
+    );
+}
+
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+    width: auto;
+    transition: var(--transition);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.3rem;
+}
+
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--secondary-dark));
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background: var(--text-light);
+    transition: var(--transition);
+}
+
+/* Hero */
+.hero {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(212, 175, 55, 0.08), transparent 25%),
+        radial-gradient(circle at right center, rgba(43, 76, 126, 0.18), transparent 30%),
+        linear-gradient(135deg, #05070d 0%, #0f172a 45%, #111827 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+/* Floor animation */
+.floor-animation-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 52%;
+    overflow: hidden;
+    opacity: 0.42;
+    pointer-events: none;
+}
+
+.floor-surface {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #162033 0%, #0b1220 45%, #05070d 100%);
+    overflow: hidden;
+}
+
+.floor-texture {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 56px,
+            rgba(255,255,255,0.025) 56px,
+            rgba(255,255,255,0.025) 57px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 56px,
+            rgba(255,255,255,0.02) 56px,
+            rgba(255,255,255,0.02) 57px
+        );
+    animation: textureMove 20s linear infinite;
+}
+
+.polished-area {
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 42%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(212, 175, 55, 0.12) 18%,
+        rgba(255,255,255,0.5) 50%,
+        rgba(212, 175, 55, 0.16) 82%,
+        transparent 100%
+    );
+    filter: blur(18px);
+    animation: polishSweep 4s ease-in-out infinite;
+}
+
+.polisher {
+    position: absolute;
+    bottom: 20%;
+    left: -10%;
+    width: 120px;
+    height: 120px;
+    animation: polisherMove 4s ease-in-out infinite;
+    z-index: 10;
+}
+
+.polisher-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: polisherVibrate 0.1s linear infinite;
+}
+
+.polisher-handle {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 60px;
+    background: linear-gradient(to right, #374151, #6b7280, #374151);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.45);
+}
+
+.polisher-handle::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 20px;
+    background: linear-gradient(to bottom, #111827, #05070d);
+    border-radius: 5px;
+}
+
+.polisher-motor {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 42px;
+    background: linear-gradient(135deg, #1e3a5f, #0f172a);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.28);
+    border: 1px solid rgba(212,175,55,0.18);
+}
+
+.polisher-motor::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: #1f2937;
+    border-radius: 50%;
+    border: 3px solid var(--secondary-color);
+}
+
+.polisher-pad {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 30px;
+    background: radial-gradient(ellipse at center, #a1a1aa 0%, #52525b 100%);
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+    animation: padRotate 0.2s linear infinite;
+}
+
+.polisher-shadow {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 20px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: shadowScale 4s ease-in-out infinite;
+}
+
+.sparkles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+}
+
+.sparkles span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 12px rgba(212,175,55,0.75);
+    animation: sparkle 1s ease-out infinite;
+}
+
+.sparkles span:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+.sparkles span:nth-child(2) { top: 30%; left: 70%; animation-delay: 0.2s; }
+.sparkles span:nth-child(3) { top: 60%; left: 30%; animation-delay: 0.4s; }
+.sparkles span:nth-child(4) { top: 70%; left: 60%; animation-delay: 0.6s; }
+.sparkles span:nth-child(5) { top: 40%; left: 40%; animation-delay: 0.8s; }
+.sparkles span:nth-child(6) { top: 50%; left: 80%; animation-delay: 1s; }
+
+.floor-particles {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floor-particles span {
+    position: absolute;
+    bottom: 0;
+    width: 3px;
+    height: 3px;
+    background: rgba(212, 175, 55, 0.65);
+    border-radius: 50%;
+    animation: particleFloat 3s ease-out infinite;
+}
+
+.floor-particles span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.floor-particles span:nth-child(2) { left: 25%; animation-delay: 0.5s; }
+.floor-particles span:nth-child(3) { left: 40%; animation-delay: 1s; }
+.floor-particles span:nth-child(4) { left: 55%; animation-delay: 1.5s; }
+.floor-particles span:nth-child(5) { left: 70%; animation-delay: 2s; }
+.floor-particles span:nth-child(6) { left: 85%; animation-delay: 2.5s; }
+.floor-particles span:nth-child(7) { left: 15%; animation-delay: 3s; }
+.floor-particles span:nth-child(8) { left: 90%; animation-delay: 3.5s; }
+
+/* Hero content */
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    color: var(--text-light);
+    padding: 0 2rem;
+    max-width: 950px;
+    position: relative;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.15;
+    animation: fadeInUp 1s ease;
+}
+
+.highlight {
+    color: var(--secondary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--secondary-color);
+    opacity: 0.18;
+    z-index: -1;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    margin-bottom: 3rem;
+    opacity: 0.88;
+    font-weight: 300;
+    animation: fadeInUp 1s ease 0.2s both;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease 0.4s both;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease 0.6s both;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(212,175,55,0.22);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+    transition: 0.7s;
+}
+
+.cta-button:hover::before {
+    left: 120%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(212,175,55,0.30);
+}
+
+.hero-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    animation: fadeInUp 1s ease 0.8s both;
+}
+
+.social-link {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+    transform: translateY(100%);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.social-link:hover {
+    border-color: var(--secondary-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.social-link:hover::before {
+    transform: translateY(0);
+}
+
+/* Sections */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--secondary-color);
+}
+
+.section-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.section-header.light .section-title {
+    color: var(--text-light);
+}
+
+.section-header.light .section-subtitle {
+    color: rgba(255,255,255,0.72);
+}
+
+/* Projects */
+.projects {
+    position: relative;
+    padding: 6rem 0;
+    background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+    overflow: hidden;
+}
+
+.projects-bg-blur {
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/Nuestro_Trabajo/NT14.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(18px);
+    transform: scale(1.0);
+    opacity: 100.00;
+    pointer-events: none;
+}
+
+.projects-content {
+    position: relative;
+    z-index: 1;
+}
+
+.projects-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.6rem 1.5rem;
+    background: rgba(255,255,255,0.8);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(15,23,42,0.10);
+    transition: var(--transition);
+    border: 1px solid rgba(15,23,42,0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(15,23,42,0.16);
+}
+
+.project-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    background: #dbe4ee;
+}
+
+.project-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.project-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.project-slide.active {
+    opacity: 1;
+}
+
+.project-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-overlay-soft {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 40%;
+    background: linear-gradient(180deg, transparent 0%, rgba(10,15,28,0.68) 100%);
+    pointer-events: none;
+}
+
+.project-dots {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 7px;
+    z-index: 2;
+}
+
+.project-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.45);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.project-dot.active {
+    width: 24px;
+    border-radius: 999px;
+    background: var(--secondary-color);
+}
+
+.project-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.72);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.project-arrow i {
+    font-size: 1rem;
+}
+
+.project-arrow-prev {
+    left: 12px;
+}
+
+.project-arrow-next {
+    right: 12px;
+}
+
+.project-card:hover .project-arrow {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.project-arrow:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+    color: var(--primary-color);
+    transform: translateY(-50%) scale(1.06);
+}
+
+.project-info {
+    padding: 1.5rem;
+}
+
+.project-info h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.7rem;
+    color: var(--primary-color);
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.project-tag {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    background: var(--bg-light);
+    color: #666;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 20px;
+}
+
+/* Clients */
+.clients {
+    padding: 6rem 0;
+    background: #ffffff;
+}
+
+.clients-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.client-summary-card {
+    background: linear-gradient(135deg, #0f172a, #162033);
+    color: white;
+    border-radius: 18px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(212,175,55,0.12);
+}
+
+.client-summary-card span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+    margin-bottom: 0.4rem;
+}
+
+.client-summary-card p {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+}
+
+.featured-clients {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.client-feature {
+    background: linear-gradient(135deg, #0f172a, #162033);
+    color: white;
+    border-radius: 18px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(212,175,55,0.12);
+    transition: var(--transition);
+}
+
+.client-feature:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-medium);
+}
+
+.client-feature i {
+    font-size: 1.6rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.8rem;
+    display: inline-block;
+}
+
+.client-feature h3 {
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+}
+
+.client-feature p {
+    font-size: 0.86rem;
+    color: rgba(255,255,255,0.78);
+}
+
+.clients-toggle {
+    text-align: center;
+    margin: 2rem 0 1.5rem;
+}
+
+.secondary-button {
+    padding: 1rem 2.2rem;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.secondary-button:hover {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.clients-grid-hidden {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    transition: all 0.55s ease;
+}
+
+.clients-grid-hidden.active {
+    max-height: 2000px;
+    opacity: 1;
+    margin-top: 1rem;
+}
+
+.client-pill {
+    background: linear-gradient(135deg, rgba(15,23,42,0.03), rgba(30,58,95,0.05));
+    border: 1px solid rgba(15,23,42,0.08);
+    color: var(--primary-color);
+    padding: 1rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 4px 14px rgba(15,23,42,0.04);
+}
+
+.client-pill:hover {
+    transform: translateY(-3px);
+    border-color: rgba(212,175,55,0.45);
+    color: var(--accent-color);
+}
+
+/* Entrance animations */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.7s ease;
+}
+
+.reveal-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.12s; }
+.delay-2 { transition-delay: 0.24s; }
+.delay-3 { transition-delay: 0.36s; }
+.delay-4 { transition-delay: 0.48s; }
+
+/* Services */
+.services {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #0b1220 0%, #0f172a 60%, #111827 100%);
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: var(--secondary-color);
+    opacity: 0.04;
+    border-radius: 50%;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.service-card {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: var(--transition);
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(3px);
+}
+
+.service-card:hover {
+    border-color: rgba(212,175,55,0.5);
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.04);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    color: var(--secondary-color);
+}
+
+.service-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--secondary-color);
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.service-card p {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* Contact */
+.contact {
+    padding: 6rem 0;
+    background: var(--bg-light);
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.contact-info > p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-item i {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    min-width: 24px;
+}
+
+.contact-social {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #ddd;
+}
+
+.contact-social h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.social-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-circle {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-circle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--secondary-color);
+    transform: scale(0);
+    transition: var(--transition);
+    border-radius: 50%;
+}
+
+.social-circle:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.social-circle:hover::before {
+    transform: scale(1);
+}
+
+.social-circle i {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-form {
+    background: white;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: var(--transition);
+    background: transparent;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(180deg, #0a0f1c 0%, #05070d 100%);
+    color: var(--text-light);
+    padding: 4rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.footer-brand img {
+    height: 80px;
+    margin-bottom: 1rem;
+    filter: brightness(1.2);
+}
+
+.footer-brand p {
+    color: rgba(255,255,255,0.6);
+    max-width: 300px;
+    margin-bottom: 2rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.footer-social-link {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.footer-social-link:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.footer-links h4,
+.footer-newsletter h4 {
+    color: var(--secondary-color);
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.66);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-newsletter p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+.newsletter-form button {
+    padding: 0.8rem 1.2rem;
+    background: var(--secondary-color);
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    background: #b8984d;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes textureMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50px); }
+}
+
+@keyframes polishSweep {
+    0% { left: -100%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 200%; opacity: 0; }
+}
+
+@keyframes polisherMove {
+    0% { left: -10%; }
+    100% { left: 110%; }
+}
+
+@keyframes polisherVibrate {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+@keyframes padRotate {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+@keyframes shadowScale {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.4; }
+    50% { transform: translateX(-50%) scale(1.2); opacity: 0.6; }
+}
+
+@keyframes sparkle {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0); }
+}
+
+@keyframes particleFloat {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-100px) scale(0); opacity: 0; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .featured-clients {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 968px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 78px;
+        flex-direction: column;
+        background: var(--primary-color);
+        width: 100%;
+        text-align: center;
+        transition: var(--transition);
+        padding: 2rem 0;
+        gap: 1.5rem;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero-title {
+        font-size: 2.7rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .floor-animation-container {
+        height: 40%;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .clients-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer-brand p {
+        margin: 0 auto 2rem;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .newsletter-form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .container,
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .polisher {
+        transform: scale(0.7);
+    }
+
+    .hero-social {
+        gap: 0.5rem;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .client-pill {
+        font-size: 0.8rem;
+        border-radius: 20px;
+    }
+
+    .featured-clients {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+const projects = [
+    {
+        name: "Nuestro Trabajo",
+        category: "Destacados",
+        location: "El Salvador",
+        images: [
+            "assets/Nuestro_Trabajo/NT1.jpeg",
+            "assets/Nuestro_Trabajo/NT2.jpeg",
+            "assets/Nuestro_Trabajo/NT3.jpeg",
+            "assets/Nuestro_Trabajo/NT4.jpeg",
+            "assets/Nuestro_Trabajo/NT5.jpeg",
+            "assets/Nuestro_Trabajo/NT6.jpeg",
+            "assets/Nuestro_Trabajo/NT7.jpeg",
+            "assets/Nuestro_Trabajo/NT8.jpeg",
+            "assets/Nuestro_Trabajo/NT9.jpeg",
+            "assets/Nuestro_Trabajo/NT10.jpeg",
+            "assets/Nuestro_Trabajo/NT11.jpeg",
+            "assets/Nuestro_Trabajo/NT12.jpeg",
+            "assets/Nuestro_Trabajo/NT13.jpeg",
+            "assets/Nuestro_Trabajo/NT14.jpeg"
+        ]
+    },
+    {
+        name: "Aeropuerto Nacional Nueva Etapa",
+        category: "Infraestructura",
+        location: "San Salvador",
+        images: [
+            "assets/Aeropuerto_Nacional_Nueva_Etapa/AN1.jpg",
+            "assets/Aeropuerto_Nacional_Nueva_Etapa/AN2.jpg",
+            "assets/Aeropuerto_Nacional_Nueva_Etapa/AN3.jpg"
+        ]
+    },
+    {
+        name: "Parque Cuscatlán",
+        category: "Espacio Público",
+        location: "San Salvador",
+        images: [
+            "assets/Parque_Cuscatlan/PC1.jpg",
+            "assets/Parque_Cuscatlan/PC2.jpg",
+            "assets/Parque_Cuscatlan/PC3.jpg",
+            "assets/Parque_Cuscatlan/PC4.jpg",
+            "assets/Parque_Cuscatlan/PC5.jpg",
+            "assets/Parque_Cuscatlan/PC6.jpg"
+        ]
+    },
+    {
+        name: "Plaza Mundo Apopa",
+        category: "Comercial",
+        location: "Apopa",
+        images: [
+            "assets/Plaza_Mundo_Apopa/PM1.jpg",
+            "assets/Plaza_Mundo_Apopa/PM2.jpg",
+            "assets/Plaza_Mundo_Apopa/PM3.jpg",
+            "assets/Plaza_Mundo_Apopa/PM4.jpg",
+            "assets/Plaza_Mundo_Apopa/PM5.jpg"
+        ]
+    },
+    {
+        name: "DHIARE Chalatenango",
+        category: "Industrial",
+        location: "Chalatenango",
+        images: [
+            "assets/DHIARE_Chalatenango/DC1.jpg",
+            "assets/DHIARE_Chalatenango/DC2.jpg",
+            "assets/DHIARE_Chalatenango/DC3.jpg"
+        ]
+    },
+    {
+        name: "DISA Acajutla - Cementera Fortaleza",
+        category: "Industrial",
+        location: "Acajutla",
+        images: [
+            "assets/DISA_Acajutla_Cementera_Fortaleza/DA1.jpg",
+            "assets/DISA_Acajutla_Cementera_Fortaleza/DA2.jpg",
+            "assets/DISA_Acajutla_Cementera_Fortaleza/DA3.jpg",
+            "assets/DISA_Acajutla_Cementera_Fortaleza/DA4.jpg",
+            "assets/DISA_Acajutla_Cementera_Fortaleza/DA5.jpg"
+        ]
+    },
+    {
+        name: "Terminal Buses Plaza Nuevo Amanecer",
+        category: "Infraestructura",
+        location: "Soyapango",
+        images: [
+            "assets/Terminal_Buses_Plaza_Nuevo_Amanecer/TB1.jpg",
+            "assets/Terminal_Buses_Plaza_Nuevo_Amanecer/TB2.jpg",
+            "assets/Terminal_Buses_Plaza_Nuevo_Amanecer/TB3.jpg",
+            "assets/Terminal_Buses_Plaza_Nuevo_Amanecer/TB4.jpg",
+            "assets/Terminal_Buses_Plaza_Nuevo_Amanecer/TB5.jpg"
+        ]
+    },
+    {
+        name: "Soluciones Ingeniería Imprenta",
+        category: "Comercial",
+        location: "San Salvador",
+        images: [
+            "assets/Soluciones_Ingenieria_Imprenta/SI1.jpg",
+            "assets/Soluciones_Ingenieria_Imprenta/SI2.jpg",
+            "assets/Soluciones_Ingenieria_Imprenta/SI3.jpg",
+            "assets/Soluciones_Ingenieria_Imprenta/SI4.jpg",
+            "assets/Soluciones_Ingenieria_Imprenta/SI5.jpg"
+        ]
+    },
+    {
+        name: "Global Import Spices Quezaltepeque",
+        category: "Industrial",
+        location: "Quezaltepeque",
+        images: [
+            "assets/Global_Import_Spices_Quezaltepeque/GQ1.jpg",
+            "assets/Global_Import_Spices_Quezaltepeque/GQ2.jpg",
+            "assets/Global_Import_Spices_Quezaltepeque/GQ3.jpg",
+            "assets/Global_Import_Spices_Quezaltepeque/GQ4.jpg",
+            "assets/Global_Import_Spices_Quezaltepeque/GQ5.jpg"
+        ]
+    },
+    {
+        name: "McDonald's Aguilares",
+        category: "Comercial",
+        location: "Aguilares",
+        images: [
+            "assets/McDonalds_Aguilares/MA1.jpg",
+            "assets/McDonalds_Aguilares/MA2.jpg"
+        ]
+    },
+    {
+        name: "Bimbo Merliot",
+        category: "Industrial",
+        location: "Merliot",
+        images: [
+            "assets/Bimbo_Merliot/BM1.jpg",
+            "assets/Bimbo_Merliot/BM2.jpg",
+            "assets/Bimbo_Merliot/BM3.jpg",
+            "assets/Bimbo_Merliot/BM4.jpg"
+        ]
+    },
+    {
+        name: "Cortimetal",
+        category: "Industrial",
+        location: "San Salvador",
+        images: [
+            "assets/Cortimetal/CO1.jpg",
+            "assets/Cortimetal/CO2.jpg"
+        ]
+    },
+    {
+        name: "Ingenio El Ángel",
+        category: "Industrial",
+        location: "Santa Ana",
+        images: [
+            "assets/Ingenio_El_Angel/IE1.jpg",
+            "assets/Ingenio_El_Angel/IE2.jpg",
+            "assets/Ingenio_El_Angel/IE3.jpg"
+        ]
+    },
+    {
+        name: "Seminario Mayor San José",
+        category: "Institucional",
+        location: "San Salvador",
+        images: [
+            "assets/Seminario_Mayor_San_Jose/SM1.jpg",
+            "assets/Seminario_Mayor_San_Jose/SM2.jpg",
+            "assets/Seminario_Mayor_San_Jose/SM3.jpg"
+        ]
+    },
+    {
+        name: "Puertas Del Alma III",
+        category: "Residencial",
+        location: "San Salvador",
+        images: [
+            "assets/Puertas_Del_Alma_III/PA1.jpg",
+            "assets/Puertas_Del_Alma_III/PA2.jpg",
+            "assets/Puertas_Del_Alma_III/PA3.jpg"
+        ]
+    },
+    {
+        name: "Mercado Chalchuapa",
+        category: "Infraestructura",
+        location: "Chalchuapa",
+        images: [
+            "assets/Mercado_Chalchuapa/MC1.jpg",
+            "assets/Mercado_Chalchuapa/MC2.jpg"
+        ]
+    },
+    {
+        name: "Torre Puertas Del Alma",
+        category: "Residencial",
+        location: "San Salvador",
+        images: [
+            "assets/Torre_Puertas_Del_Alma/TP1.jpg",
+            "assets/Torre_Puertas_Del_Alma/TP2.jpg"
+        ]
+    },
+    {
+        name: "Ingenio La Magdalena",
+        category: "Industrial",
+        location: "San Salvador",
+        images: [
+            "assets/Ingenio_La_Magdalena/IM1.jpg",
+            "assets/Ingenio_La_Magdalena/IM2.jpg",
+            "assets/Ingenio_La_Magdalena/IM3.jpg"
+        ]
+    },
+    {
+        name: "Bodegas VIDRI Nejapa",
+        category: "Industrial",
+        location: "Nejapa",
+        images: [
+            "assets/Bodegas_VIDRI_Nejapa/BV1.jpg",
+            "assets/Bodegas_VIDRI_Nejapa/BV2.jpg",
+            "assets/Bodegas_VIDRI_Nejapa/BV3.jpg"
+        ]
+    },
+    {
+        name: "Centro Plástico Ilopango",
+        category: "Industrial",
+        location: "Ilopango",
+        images: [
+            "assets/Centro_Plastico_Ilopango/CP1.jpg",
+            "assets/Centro_Plastico_Ilopango/CP2.jpg"
+        ]
+    },
+    {
+        name: "Plaza Mundo Bodegas",
+        category: "Comercial",
+        location: "Soyapango",
+        images: [
+            "assets/Plaza_Mundo_Bodegas/PMB1.jpg",
+            "assets/Plaza_Mundo_Bodegas/PMB2.jpg"
+        ]
+    },
+    {
+        name: "Torre 141",
+        category: "Residencial",
+        location: "San Salvador",
+        images: [
+            "assets/Torre_141/T141_1.jpg",
+            "assets/Torre_141/T141_2.jpg",
+            "assets/Torre_141/T141_3.jpg"
+        ]
+    },
+    {
+        name: "Planta El Ángel CASW",
+        category: "Industrial",
+        location: "Santa Ana",
+        images: [
+            "assets/Planta_El_Angel_CASW/PE1.jpg",
+            "assets/Planta_El_Angel_CASW/PE2.jpg"
+        ]
+    },
+    {
+        name: "Chalatenango Rampa",
+        category: "Infraestructura",
+        location: "Chalatenango",
+        images: [
+            "assets/Chalatenango_Rampa/CR1.jpg"
+        ]
+    },
+    {
+        name: "Garden Tower San Marcos",
+        category: "Residencial",
+        location: "San Marcos",
+        images: [
+            "assets/Garden_Tower_San_Marcos/GT1.jpg",
+            "assets/Garden_Tower_San_Marcos/GT2.jpg",
+            "assets/Garden_Tower_San_Marcos/GT3.jpg"
+        ]
+    },
+    {
+        name: "Cancha Multiusos San Rafael",
+        category: "Deportivo",
+        location: "San Rafael",
+        images: [
+            "assets/Cancha_Multiusos_San_Rafael/CM1.jpg",
+            "assets/Cancha_Multiusos_San_Rafael/CM2.jpg",
+            "assets/Cancha_Multiusos_San_Rafael/CM3.jpg"
+        ]
+    },
+    {
+        name: "Bodegas El Sitio San Miguel",
+        category: "Industrial",
+        location: "San Miguel",
+        images: [
+            "assets/Bodegas_El_Sitio_San_Miguel/BS1.jpg",
+            "assets/Bodegas_El_Sitio_San_Miguel/BS2.jpg",
+            "assets/Bodegas_El_Sitio_San_Miguel/BS3.jpg",
+            "assets/Bodegas_El_Sitio_San_Miguel/BS4.jpg"
+        ]
+    }
+];
+
+const projectsGrid = document.getElementById("projectsGrid");
+const projectsFilter = document.getElementById("projectsFilter");
+const navbar = document.getElementById("navbar");
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+const toggleClientsBtn = document.getElementById("toggleClientsBtn");
+const allClientsGrid = document.getElementById("allClientsGrid");
+
+let currentFilter = "Todos";
+const sliderIntervals = [];
+const sliderStates = {};
+
+/* Navbar */
+window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 50);
+});
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    });
+});
+
+/* Filters */
+function getCategories() {
+    const counts = {};
+
+    projects.forEach(project => {
+        counts[project.category] = (counts[project.category] || 0) + 1;
+    });
+
+    const orderedCategories = Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .map(entry => entry[0]);
+
+    orderedCategories.push("Todos");
+
+    return orderedCategories;
+}
+
+function renderFilters() {
+    const categories = getCategories();
+
+    projectsFilter.innerHTML = categories.map(category => `
+        <button class="filter-btn ${category === currentFilter ? "active" : ""}" data-category="${category}">
+            ${category}
+        </button>
+    `).join("");
+
+    document.querySelectorAll(".filter-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            currentFilter = button.dataset.category;
+            renderFilters();
+            renderProjects();
+        });
+    });
+}
+
+function getFilteredProjects() {
+    if (currentFilter === "Todos") return projects;
+    return projects.filter(project => project.category === currentFilter);
+}
+
+/* Projects */
+function renderProjects() {
+    sliderIntervals.forEach(interval => clearInterval(interval));
+    sliderIntervals.length = 0;
+
+    const filteredProjects = getFilteredProjects();
+
+    projectsGrid.innerHTML = filteredProjects.map((project, projectIndex) => `
+        <article class="project-card">
+            <div class="project-image">
+                <div class="project-slides" id="slides-${projectIndex}">
+                    ${project.images.map((image, imageIndex) => `
+                        <div class="project-slide ${imageIndex === 0 ? "active" : ""}">
+                            <img src="${image}" alt="${project.name} - imagen ${imageIndex + 1}" loading="lazy">
+                        </div>
+                    `).join("")}
+                </div>
+
+                ${project.images.length > 1 ? `
+                    <button class="project-arrow project-arrow-prev" data-project="${projectIndex}" data-direction="prev" aria-label="Imagen anterior">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="project-arrow project-arrow-next" data-project="${projectIndex}" data-direction="next" aria-label="Imagen siguiente">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                ` : ""}
+
+                <div class="project-overlay-soft"></div>
+
+                <div class="project-dots" id="dots-${projectIndex}">
+                    ${project.images.map((_, imageIndex) => `
+                        <span class="project-dot ${imageIndex === 0 ? "active" : ""}"></span>
+                    `).join("")}
+                </div>
+            </div>
+
+            <div class="project-info">
+                <h3>${project.name}</h3>
+                <div class="project-meta">
+                    <span class="project-tag">${project.category}</span>
+                    <span class="project-tag">${project.location}</span>
+                </div>
+            </div>
+        </article>
+    `).join("");
+
+    initProjectArrows(filteredProjects);
+    startAllSliders(filteredProjects);
+}
+
+function initProjectArrows(filteredProjects) {
+    document.querySelectorAll(".project-arrow").forEach(button => {
+        button.addEventListener("click", () => {
+            const projectIndex = Number(button.dataset.project);
+            const direction = button.dataset.direction;
+
+            moveSlide(projectIndex, direction === "next" ? 1 : -1, filteredProjects);
+        });
+    });
+}
+
+function moveSlide(projectIndex, step, filteredProjects) {
+    const project = filteredProjects[projectIndex];
+    if (!project) return;
+
+    const slidesContainer = document.getElementById(`slides-${projectIndex}`);
+    const dotsContainer = document.getElementById(`dots-${projectIndex}`);
+
+    if (!slidesContainer || !dotsContainer) return;
+
+    const slides = slidesContainer.querySelectorAll(".project-slide");
+    const dots = dotsContainer.querySelectorAll(".project-dot");
+
+    if (!sliderStates[projectIndex] && sliderStates[projectIndex] !== 0) {
+        sliderStates[projectIndex] = 0;
+    }
+
+    slides[sliderStates[projectIndex]].classList.remove("active");
+    dots[sliderStates[projectIndex]].classList.remove("active");
+
+    sliderStates[projectIndex] =
+        (sliderStates[projectIndex] + step + slides.length) % slides.length;
+
+    slides[sliderStates[projectIndex]].classList.add("active");
+    dots[sliderStates[projectIndex]].classList.add("active");
+}
+
+function startAllSliders(filteredProjects) {
+    filteredProjects.forEach((project, projectIndex) => {
+        const slidesContainer = document.getElementById(`slides-${projectIndex}`);
+        const dotsContainer = document.getElementById(`dots-${projectIndex}`);
+
+        if (!slidesContainer || !dotsContainer) return;
+
+        const slides = slidesContainer.querySelectorAll(".project-slide");
+        const dots = dotsContainer.querySelectorAll(".project-dot");
+
+        if (slides.length <= 1) return;
+
+        sliderStates[projectIndex] = 0;
+
+        const interval = setInterval(() => {
+            slides[sliderStates[projectIndex]].classList.remove("active");
+            dots[sliderStates[projectIndex]].classList.remove("active");
+
+            sliderStates[projectIndex] =
+                (sliderStates[projectIndex] + 1) % slides.length;
+
+            slides[sliderStates[projectIndex]].classList.add("active");
+            dots[sliderStates[projectIndex]].classList.add("active");
+        }, 5000);
+
+        sliderIntervals.push(interval);
+    });
+}
+
+/* Clients toggle */
+if (toggleClientsBtn && allClientsGrid) {
+    toggleClientsBtn.addEventListener("click", () => {
+        allClientsGrid.classList.toggle("active");
+
+        toggleClientsBtn.textContent = allClientsGrid.classList.contains("active")
+            ? "Ocultar clientes"
+            : "Ver todos los clientes";
+    });
+}
+
+/* Entrance animations */
+const revealElements = document.querySelectorAll(".reveal-up");
+
+function revealOnScroll() {
+    revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+            el.classList.add("visible");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+/* Contact form */
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const whatsappMessage = `Hola, soy ${name}.
+Correo: ${email}
+Teléfono: ${phone || "No proporcionado"}
+
+Mensaje:
+${message}`;
+
+    const url = `https://wa.me/50375003155?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(url, "_blank");
+    this.reset();
+});
+
+/* Init */
+renderFilters();
+renderProjects();
+revealOnScroll();
+
+
+
+
+hOLA EL BACKGROUND DE DONDE DICE Acabados de concreto con nivel premium
+Más de 10 años de experiencia, más de 200 proyectos realizados y presencia a nivel nacional en soluciones de acabado, pulido y tratamiento profesional de pisos de concreto.
+
+
+QUIERO QUE SEA LA IMAGEN NT14.jpeg que esta en la carpera nuestros trabajos, y que ya no sea esa la imagen de background general
+
+
