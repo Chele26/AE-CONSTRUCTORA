@@ -4,11 +4,11 @@ const projects = [
         category: "Recientes",
         location: "El Salvador",
         images: [
-            "assets/Proyectos_recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO1.jpeg",
-            "assets/Proyectos_recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO2.jpeg",
-            "assets/Proyectos_recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO3.jpeg",
-            "assets/Proyectos_recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO4.jpeg",
-            "assets/Proyectos_recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO5.jpeg"
+            "assets/Proyectos_Recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO1.jpeg",
+            "assets/Proyectos_Recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO2.jpeg",
+            "assets/Proyectos_Recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO3.jpeg",
+            "assets/Proyectos_Recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO4.jpeg",
+            "assets/Proyectos_Recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO5.jpeg"
         ],
         recent: true
     },
@@ -17,10 +17,10 @@ const projects = [
         category: "Recientes",
         location: "Santa Ana",
         images: [
-            "assets/Proyectos_recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP1.jpeg",
-            "assets/Proyectos_recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP2.jpeg",
-            "assets/Proyectos_recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP3.jpeg",
-            "assets/Proyectos_recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP4.jpeg"
+            "assets/Proyectos_Recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP1.jpeg",
+            "assets/Proyectos_Recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP2.jpeg",
+            "assets/Proyectos_Recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP3.jpeg",
+            "assets/Proyectos_Recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP4.jpeg"
         ],
         recent: true
     },
@@ -29,12 +29,12 @@ const projects = [
         category: "Recientes",
         location: "La Unión",
         images: [
-            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC1.jpeg",
-            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC2.jpeg",
-            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC3.jpeg",
-            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC4.jpeg",
-            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC5.jpeg",
-            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC6.jpeg"
+            "assets/Proyectos_Recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC1.jpeg",
+            "assets/Proyectos_Recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC2.jpeg",
+            "assets/Proyectos_Recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC3.jpeg",
+            "assets/Proyectos_Recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC4.jpeg",
+            "assets/Proyectos_Recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC5.jpeg",
+            "assets/Proyectos_Recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC6.jpeg"
         ],
         recent: true
     },
@@ -43,16 +43,16 @@ const projects = [
         category: "Recientes",
         location: "San Salvador",
         images: [
-            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS1.jpeg",
-            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS2.jpeg",
-            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS3.jpeg",
-            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS4.jpeg",
-            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS5.jpeg",
-            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS6.jpeg",
-            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS7.jpeg",
-            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS8.jpeg",
-            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS9.jpeg",
-            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS10.jpeg"
+            "assets/Proyectos_Recientes/Edificio_San Benito_Leo_Constructora/EDS1.jpeg",
+            "assets/Proyectos_Recientes/Edificio_San Benito_Leo_Constructora/EDS2.jpeg",
+            "assets/Proyectos_Recientes/Edificio_San Benito_Leo_Constructora/EDS3.jpeg",
+            "assets/Proyectos_Recientes/Edificio_San Benito_Leo_Constructora/EDS4.jpeg",
+            "assets/Proyectos_Recientes/Edificio_San Benito_Leo_Constructora/EDS5.jpeg",
+            "assets/Proyectos_Recientes/Edificio_San Benito_Leo_Constructora/EDS6.jpeg",
+            "assets/Proyectos_Recientes/Edificio_San Benito_Leo_Constructora/EDS7.jpeg",
+            "assets/Proyectos_Recientes/Edificio_San Benito_Leo_Constructora/EDS8.jpeg",
+            "assets/Proyectos_Recientes/Edificio_San Benito_Leo_Constructora/EDS9.jpeg",
+            "assets/Proyectos_Recientes/Edificio_San Benito_Leo_Constructora/EDS10.jpeg"
         ],
         recent: true
     },
