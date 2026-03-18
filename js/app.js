@@ -691,7 +691,7 @@ Teléfono: ${phone || "No proporcionado"}
 
 Mensaje:
 ${message}`;
-        const url = `https://wa.me/50375738169?text=${encodeURIComponent(whatsappMessage)}`;
+            const url = `https://wa.me/50375738169?text=${encodeURIComponent(whatsappMessage)}`;
         window.open(url, "_blank");
         this.reset();
     });
