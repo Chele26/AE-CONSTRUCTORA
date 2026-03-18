@@ -2042,3 +2042,18 @@ img {
         height: 36px;
     }
 }
+
+/* Tarjeta wide para video */
+.project-card--wide {
+    grid-column: span 2;
+}
+
+.project-card--wide .project-image {
+    height: 300px;
+}
+
+@media (max-width: 968px) {
+    .project-card--wide {
+        grid-column: span 1;
+    }
+}

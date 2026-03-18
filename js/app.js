@@ -56,6 +56,14 @@ const projects = [
         ],
         recent: true
     },
+    {
+        name: "Nivelación con Láser Rotativo",
+        category: "Recientes",
+        location: "El Salvador",
+        video: "assets/Videos/Laser.mp4",
+        wide: true,
+        recent: true
+    },
 
     {
         name: "Nuestro Trabajo",
@@ -438,6 +446,33 @@ function getFilteredProjects() {
 }
 
 function createProjectCard(project, projectIndex, blockKey) {
+    // Tarjeta de VIDEO WIDE (ocupa 2 columnas)
+    if (project.video && project.wide) {
+        return `
+            <article class="project-card project-card--wide reveal-card delay-${projectIndex % 4}">
+                <div class="project-image">
+                    <video
+                        src="${project.video}"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        style="width:100%;height:100%;object-fit:cover;display:block;"
+                    ></video>
+                    <div class="project-overlay-soft"></div>
+                </div>
+                <div class="project-info">
+                    <h3>${project.name}</h3>
+                    <div class="project-meta">
+                        <span class="project-tag">${project.category}</span>
+                        <span class="project-tag">${project.location}</span>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
+
+    // Tarjeta normal con imágenes
     return `
         <article class="project-card reveal-card delay-${projectIndex % 4}">
             <div class="project-image">
@@ -551,6 +586,8 @@ function moveSlide(projectIndex, step, projectsList, blockKey) {
 
 function startAllSliders(projectsList, blockKey) {
     projectsList.forEach((project, projectIndex) => {
+        if (project.video) return; // los videos no necesitan slider
+
         const slidesContainer = document.getElementById(`slides-${blockKey}-${projectIndex}`);
         const dotsContainer = document.getElementById(`dots-${blockKey}-${projectIndex}`);
 
