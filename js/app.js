@@ -1,5 +1,63 @@
 const projects = [
     {
+        name: "TORRE ONE piso pulido - Inversiones ONE",
+        category: "Recientes",
+        location: "El Salvador",
+        images: [
+            "assets/Proyectos_recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO1.jpeg",
+            "assets/Proyectos_recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO2.jpeg",
+            "assets/Proyectos_recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO3.jpeg",
+            "assets/Proyectos_recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO4.jpeg",
+            "assets/Proyectos_recientes/TORRE_ONE_piso_pulido_Inversiones_ONE/TO5.jpeg"
+        ],
+        recent: true
+    },
+    {
+        name: "Part Plus Santa Ana - acabado pulido",
+        category: "Recientes",
+        location: "Santa Ana",
+        images: [
+            "assets/Proyectos_recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP1.jpeg",
+            "assets/Proyectos_recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP2.jpeg",
+            "assets/Proyectos_recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP3.jpeg",
+            "assets/Proyectos_recientes/Part_plus_santa_ana_acabado_pulido_leo_constructora/PP4.jpeg"
+        ],
+        recent: true
+    },
+    {
+        name: "Jaguey 128 La Unión - piso flotado",
+        category: "Recientes",
+        location: "La Unión",
+        images: [
+            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC1.jpeg",
+            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC2.jpeg",
+            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC3.jpeg",
+            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC4.jpeg",
+            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC5.jpeg",
+            "assets/Proyectos_recientes/Jaguey_128_la_union_piso_flotado_FHC_INGENIEROS/FHC6.jpeg"
+        ],
+        recent: true
+    },
+    {
+        name: "Edificio San Benito - Leo Constructora",
+        category: "Recientes",
+        location: "San Salvador",
+        images: [
+            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS1.jpeg",
+            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS2.jpeg",
+            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS3.jpeg",
+            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS4.jpeg",
+            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS5.jpeg",
+            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS6.jpeg",
+            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS7.jpeg",
+            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS8.jpeg",
+            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS9.jpeg",
+            "assets/Proyectos_recientes/Edificio_San Benito_Leo_Constructora/EDS10.jpeg"
+        ],
+        recent: true
+    },
+
+    {
         name: "Nuestro Trabajo",
         category: "Destacados",
         location: "El Salvador",
@@ -289,11 +347,12 @@ const projects = [
 ];
 
 const projectsGrid = document.getElementById("projectsGrid");
+const extraProjectsGrid = document.getElementById("extraProjectsGrid");
 const projectsFilter = document.getElementById("projectsFilter");
+const toggleProjectsBtn = document.getElementById("toggleProjectsBtn");
 const navbar = document.getElementById("navbar");
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("navMenu");
-
 const toggleClientsBtn = document.getElementById("toggleClientsBtn");
 const allClientsGrid = document.getElementById("allClientsGrid");
 
@@ -306,15 +365,17 @@ window.addEventListener("scroll", () => {
     navbar.classList.toggle("scrolled", window.scrollY > 50);
 });
 
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-});
+if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+    });
+}
 
 document.querySelectorAll(".nav-link").forEach(link => {
     link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        navMenu.classList.remove("active");
+        if (hamburger) hamburger.classList.remove("active");
+        if (navMenu) navMenu.classList.remove("active");
     });
 });
 
@@ -323,6 +384,7 @@ function getCategories() {
     const counts = {};
 
     projects.forEach(project => {
+        if (project.recent) return;
         counts[project.category] = (counts[project.category] || 0) + 1;
     });
 
@@ -330,6 +392,7 @@ function getCategories() {
         .sort((a, b) => b[1] - a[1])
         .map(entry => entry[0]);
 
+    orderedCategories.unshift("Recientes");
     orderedCategories.push("Todos");
 
     return orderedCategories;
@@ -354,21 +417,31 @@ function renderFilters() {
 }
 
 function getFilteredProjects() {
-    if (currentFilter === "Todos") return projects;
-    return projects.filter(project => project.category === currentFilter);
+    if (currentFilter === "Todos") {
+        return {
+            featured: projects.filter(project => project.recent),
+            extra: projects.filter(project => !project.recent)
+        };
+    }
+
+    if (currentFilter === "Recientes") {
+        return {
+            featured: projects.filter(project => project.recent),
+            extra: []
+        };
+    }
+
+    return {
+        featured: projects.filter(project => !project.recent && project.category === currentFilter).slice(0, 4),
+        extra: projects.filter(project => !project.recent && project.category === currentFilter).slice(4)
+    };
 }
 
-/* Projects */
-function renderProjects() {
-    sliderIntervals.forEach(interval => clearInterval(interval));
-    sliderIntervals.length = 0;
-
-    const filteredProjects = getFilteredProjects();
-
-    projectsGrid.innerHTML = filteredProjects.map((project, projectIndex) => `
+function createProjectCard(project, projectIndex, blockKey) {
+    return `
         <article class="project-card reveal-card delay-${projectIndex % 4}">
             <div class="project-image">
-                <div class="project-slides" id="slides-${projectIndex}">
+                <div class="project-slides" id="slides-${blockKey}-${projectIndex}">
                     ${project.images.map((image, imageIndex) => `
                         <div class="project-slide ${imageIndex === 0 ? "active" : ""}">
                             <img src="${image}" alt="${project.name} - imagen ${imageIndex + 1}" loading="lazy">
@@ -377,17 +450,17 @@ function renderProjects() {
                 </div>
 
                 ${project.images.length > 1 ? `
-                    <button class="project-arrow project-arrow-prev" data-project="${projectIndex}" data-direction="prev" aria-label="Imagen anterior">
+                    <button class="project-arrow project-arrow-prev" data-block="${blockKey}" data-project="${projectIndex}" data-direction="prev" aria-label="Imagen anterior">
                         <i class="bi bi-chevron-left"></i>
                     </button>
-                    <button class="project-arrow project-arrow-next" data-project="${projectIndex}" data-direction="next" aria-label="Imagen siguiente">
+                    <button class="project-arrow project-arrow-next" data-block="${blockKey}" data-project="${projectIndex}" data-direction="next" aria-label="Imagen siguiente">
                         <i class="bi bi-chevron-right"></i>
                     </button>
                 ` : ""}
 
                 <div class="project-overlay-soft"></div>
 
-                <div class="project-dots" id="dots-${projectIndex}">
+                <div class="project-dots" id="dots-${blockKey}-${projectIndex}">
                     ${project.images.map((_, imageIndex) => `
                         <span class="project-dot ${imageIndex === 0 ? "active" : ""}"></span>
                     `).join("")}
@@ -402,54 +475,84 @@ function renderProjects() {
                 </div>
             </div>
         </article>
-    `).join("");
+    `;
+}
 
-    initProjectArrows(filteredProjects);
-    startAllSliders(filteredProjects);
+/* Projects */
+function renderProjects() {
+    sliderIntervals.forEach(interval => clearInterval(interval));
+    sliderIntervals.length = 0;
+
+    const filtered = getFilteredProjects();
+
+    projectsGrid.innerHTML = filtered.featured
+        .map((project, projectIndex) => createProjectCard(project, projectIndex, "main"))
+        .join("");
+
+    extraProjectsGrid.innerHTML = filtered.extra
+        .map((project, projectIndex) => createProjectCard(project, projectIndex, "extra"))
+        .join("");
+
+    if (filtered.extra.length === 0) {
+        toggleProjectsBtn.style.display = "none";
+        extraProjectsGrid.classList.remove("active");
+        toggleProjectsBtn.classList.remove("active");
+    } else {
+        toggleProjectsBtn.style.display = "inline-flex";
+        extraProjectsGrid.classList.remove("active");
+        toggleProjectsBtn.classList.remove("active");
+        toggleProjectsBtn.innerHTML = `<span>Ver más proyectos</span><i class="bi bi-chevron-down"></i>`;
+    }
+
+    initProjectArrows(filtered.featured, "main");
+    initProjectArrows(filtered.extra, "extra");
+    startAllSliders(filtered.featured, "main");
+    startAllSliders(filtered.extra, "extra");
     revealProjectCards();
 }
 
-function initProjectArrows(filteredProjects) {
-    document.querySelectorAll(".project-arrow").forEach(button => {
+function initProjectArrows(projectsList, blockKey) {
+    document.querySelectorAll(`.project-arrow[data-block="${blockKey}"]`).forEach(button => {
         button.addEventListener("click", () => {
             const projectIndex = Number(button.dataset.project);
             const direction = button.dataset.direction;
-
-            moveSlide(projectIndex, direction === "next" ? 1 : -1, filteredProjects);
+            moveSlide(projectIndex, direction === "next" ? 1 : -1, projectsList, blockKey);
         });
     });
 }
 
-function moveSlide(projectIndex, step, filteredProjects) {
-    const project = filteredProjects[projectIndex];
+function moveSlide(projectIndex, step, projectsList, blockKey) {
+    const project = projectsList[projectIndex];
     if (!project) return;
 
-    const slidesContainer = document.getElementById(`slides-${projectIndex}`);
-    const dotsContainer = document.getElementById(`dots-${projectIndex}`);
+    const slidesContainer = document.getElementById(`slides-${blockKey}-${projectIndex}`);
+    const dotsContainer = document.getElementById(`dots-${blockKey}-${projectIndex}`);
 
     if (!slidesContainer || !dotsContainer) return;
 
     const slides = slidesContainer.querySelectorAll(".project-slide");
     const dots = dotsContainer.querySelectorAll(".project-dot");
 
-    if (!sliderStates[projectIndex] && sliderStates[projectIndex] !== 0) {
-        sliderStates[projectIndex] = 0;
+    const stateKey = `${blockKey}-${projectIndex}`;
+
+    if (sliderStates[stateKey] === undefined) {
+        sliderStates[stateKey] = 0;
     }
 
-    slides[sliderStates[projectIndex]].classList.remove("active");
-    dots[sliderStates[projectIndex]].classList.remove("active");
+    slides[sliderStates[stateKey]].classList.remove("active");
+    dots[sliderStates[stateKey]].classList.remove("active");
 
-    sliderStates[projectIndex] =
-        (sliderStates[projectIndex] + step + slides.length) % slides.length;
+    sliderStates[stateKey] =
+        (sliderStates[stateKey] + step + slides.length) % slides.length;
 
-    slides[sliderStates[projectIndex]].classList.add("active");
-    dots[sliderStates[projectIndex]].classList.add("active");
+    slides[sliderStates[stateKey]].classList.add("active");
+    dots[sliderStates[stateKey]].classList.add("active");
 }
 
-function startAllSliders(filteredProjects) {
-    filteredProjects.forEach((project, projectIndex) => {
-        const slidesContainer = document.getElementById(`slides-${projectIndex}`);
-        const dotsContainer = document.getElementById(`dots-${projectIndex}`);
+function startAllSliders(projectsList, blockKey) {
+    projectsList.forEach((project, projectIndex) => {
+        const slidesContainer = document.getElementById(`slides-${blockKey}-${projectIndex}`);
+        const dotsContainer = document.getElementById(`dots-${blockKey}-${projectIndex}`);
 
         if (!slidesContainer || !dotsContainer) return;
 
@@ -458,20 +561,41 @@ function startAllSliders(filteredProjects) {
 
         if (slides.length <= 1) return;
 
-        sliderStates[projectIndex] = 0;
+        const stateKey = `${blockKey}-${projectIndex}`;
+        sliderStates[stateKey] = 0;
 
         const interval = setInterval(() => {
-            slides[sliderStates[projectIndex]].classList.remove("active");
-            dots[sliderStates[projectIndex]].classList.remove("active");
+            slides[sliderStates[stateKey]].classList.remove("active");
+            dots[sliderStates[stateKey]].classList.remove("active");
 
-            sliderStates[projectIndex] =
-                (sliderStates[projectIndex] + 1) % slides.length;
+            sliderStates[stateKey] =
+                (sliderStates[stateKey] + 1) % slides.length;
 
-            slides[sliderStates[projectIndex]].classList.add("active");
-            dots[sliderStates[projectIndex]].classList.add("active");
+            slides[sliderStates[stateKey]].classList.add("active");
+            dots[sliderStates[stateKey]].classList.add("active");
         }, 5000);
 
         sliderIntervals.push(interval);
+    });
+}
+
+/* Toggle more projects */
+if (toggleProjectsBtn && extraProjectsGrid) {
+    toggleProjectsBtn.addEventListener("click", () => {
+        extraProjectsGrid.classList.toggle("active");
+        toggleProjectsBtn.classList.toggle("active");
+
+        const isActive = extraProjectsGrid.classList.contains("active");
+
+        toggleProjectsBtn.innerHTML = isActive
+            ? `<span>Ocultar proyectos</span><i class="bi bi-chevron-down"></i>`
+            : `<span>Ver más proyectos</span><i class="bi bi-chevron-down"></i>`;
+
+        if (isActive) {
+            setTimeout(() => {
+                revealProjectCards();
+            }, 150);
+        }
     });
 }
 
@@ -487,10 +611,8 @@ if (toggleClientsBtn && allClientsGrid) {
 }
 
 /* Entrance animations */
-const revealElements = document.querySelectorAll(".reveal-up");
-
 function revealOnScroll() {
-    revealElements.forEach(el => {
+    document.querySelectorAll(".reveal-up").forEach(el => {
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight - 80) {
             el.classList.add("visible");
@@ -511,30 +633,33 @@ function revealProjectCards() {
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
-
 window.addEventListener("scroll", revealProjectCards);
 window.addEventListener("load", revealProjectCards);
 
 /* Contact form */
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+const contactForm = document.getElementById("contactForm");
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const message = document.getElementById("message").value.trim();
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    const whatsappMessage = `Hola, soy ${name}.
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        const whatsappMessage = `Hola, soy ${name}.
 Correo: ${email}
 Teléfono: ${phone || "No proporcionado"}
 
 Mensaje:
 ${message}`;
 
-    const url = `https://wa.me/50375003155?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(url, "_blank");
-    this.reset();
-});
+        const url = `https://wa.me/50375003155?text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(url, "_blank");
+        this.reset();
+    });
+}
 
 /* Init */
 renderFilters();
