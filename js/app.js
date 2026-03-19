@@ -691,7 +691,7 @@ Teléfono: ${phone || "No proporcionado"}
 
 Mensaje:
 ${message}`;
-            const url = `https://wa.me/50375738169?text=${encodeURIComponent(whatsappMessage)}`;
+            const url = `https://wa.me/50372019807?text=${encodeURIComponent(whatsappMessage)}`;
         window.open(url, "_blank");
         this.reset();
     });
@@ -707,7 +707,7 @@ function sendFooterContact() {
     }
 
     const message = `Hola, me gustaría que me contactaran para un proyecto.\nMi contacto: ${value}`;
-    const url = `https://wa.me/50375738169?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/50372019807?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
 
     document.getElementById("footerContact").value = "";
