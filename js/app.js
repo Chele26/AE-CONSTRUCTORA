@@ -64,7 +64,6 @@ const projects = [
         wide: true,
         recent: true
     },
-
     {
         name: "Nuestro Trabajo",
         category: "Destacados",
@@ -354,113 +353,238 @@ const projects = [
     }
 ];
 
-const projectsGrid = document.getElementById("projectsGrid");
-const extraProjectsGrid = document.getElementById("extraProjectsGrid");
-const projectsFilter = document.getElementById("projectsFilter");
-const toggleProjectsBtn = document.getElementById("toggleProjectsBtn");
-const navbar = document.getElementById("navbar");
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("navMenu");
-const toggleClientsBtn = document.getElementById("toggleClientsBtn");
-const allClientsGrid = document.getElementById("allClientsGrid");
+document.addEventListener("DOMContentLoaded", () => {
+    const DESKTOP_MENU_BREAKPOINT = 1280;
 
-let currentFilter = "Todos";
-const sliderIntervals = [];
-const sliderStates = {};
+    // ── Referencias DOM ──────────────────────────────────────────
+    const projectsGrid      = document.getElementById("projectsGrid");
+    const extraProjectsGrid = document.getElementById("extraProjectsGrid");
+    const projectsFilter    = document.getElementById("projectsFilter");
+    const toggleProjectsBtn = document.getElementById("toggleProjectsBtn");
+    const navbar            = document.getElementById("navbar");
+    const hamburger         = document.getElementById("hamburger");
+    const navMenu           = document.getElementById("navMenu");
+    const navOverlay        = document.getElementById("navOverlay");   // ← NUEVO
+    const toggleClientsBtn  = document.getElementById("toggleClientsBtn");
+    const allClientsGrid    = document.getElementById("allClientsGrid");
+    const contactForm       = document.getElementById("contactForm");
 
-/* Navbar */
-window.addEventListener("scroll", () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
-});
+    let currentFilter = "Todos";
+    const sliderIntervals = [];
+    const sliderStates = {};
 
-if (hamburger && navMenu) {
-    hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
-    });
-}
+    // ── Navbar height sync ───────────────────────────────────────
+    function syncNavbarHeight() {
+        if (!navbar) return;
+        const navbarHeight = navbar.offsetHeight || 88;
+        document.documentElement.style.setProperty("--navbar-height-current", `${navbarHeight}px`);
+    }
 
-document.querySelectorAll(".nav-link").forEach(link => {
-    link.addEventListener("click", () => {
-        if (hamburger) hamburger.classList.remove("active");
-        if (navMenu) navMenu.classList.remove("active");
-    });
-});
+    function updateNavbarScroll() {
+        if (!navbar) return;
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
+        syncNavbarHeight();
+    }
 
-/* Filters */
-function getCategories() {
-    const counts = {};
+    // ── Menú hamburguesa ─────────────────────────────────────────
+    function openMenu() {
+        if (!hamburger || !navMenu) return;
+        hamburger.classList.add("active");
+        navMenu.classList.add("active");
+        hamburger.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
 
-    projects.forEach(project => {
-        if (project.recent) return;
-        counts[project.category] = (counts[project.category] || 0) + 1;
-    });
+        if (navOverlay) {
+            navOverlay.style.display = "block";
+            requestAnimationFrame(() => navOverlay.classList.add("active"));
+        }
+    }
 
-    const orderedCategories = Object.entries(counts)
-        .sort((a, b) => b[1] - a[1])
-        .map(entry => entry[0]);
+    function closeMenu() {
+        if (!hamburger || !navMenu) return;
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
 
-    orderedCategories.unshift("Recientes");
-    orderedCategories.push("Todos");
+        if (navOverlay) {
+            navOverlay.classList.remove("active");
+            navOverlay.addEventListener("transitionend", () => {
+                navOverlay.style.display = "none";
+            }, { once: true });
+        }
+    }
 
-    return orderedCategories;
-}
+    function toggleMenu() {
+        navMenu && navMenu.classList.contains("active") ? closeMenu() : openMenu();
+    }
 
-function renderFilters() {
-    const categories = getCategories();
+    if (hamburger && navMenu) {
+        // Click en botón hamburguesa
+        hamburger.addEventListener("click", toggleMenu);
 
-    projectsFilter.innerHTML = categories.map(category => `
-        <button class="filter-btn ${category === currentFilter ? "active" : ""}" data-category="${category}">
-            ${category}
-        </button>
-    `).join("");
-
-    document.querySelectorAll(".filter-btn").forEach(button => {
-        button.addEventListener("click", () => {
-            currentFilter = button.dataset.category;
-            renderFilters();
-            renderProjects();
+        // Teclado: Enter / Espacio
+        hamburger.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggleMenu();
+            }
         });
+
+        // Click en el overlay → cierra
+        if (navOverlay) {
+            navOverlay.addEventListener("click", closeMenu);
+        }
+
+        // Tecla Escape → cierra
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && navMenu.classList.contains("active")) {
+                closeMenu();
+            }
+        });
+
+        // Swipe derecha sobre el panel → cierra (móvil)
+        let touchStartX = 0;
+        navMenu.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+        }, { passive: true });
+
+        navMenu.addEventListener("touchend", (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (dx > 60) closeMenu();
+        }, { passive: true });
+
+        // Resize: cerrar si vuelve a desktop
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > DESKTOP_MENU_BREAKPOINT) {
+                closeMenu();
+            }
+            syncNavbarHeight();
+            revealOnScroll();
+            revealProjectCards();
+        });
+    }
+
+    // Cerrar al hacer click en cualquier nav-link
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", () => closeMenu());
     });
-}
 
-function getFilteredProjects() {
-    if (currentFilter === "Todos") {
+    // ── Categorías / filtros ─────────────────────────────────────
+    function getCategories() {
+        const counts = {};
+        projects.forEach(project => {
+            if (project.recent) return;
+            counts[project.category] = (counts[project.category] || 0) + 1;
+        });
+
+        const orderedCategories = Object.entries(counts)
+            .sort((a, b) => b[1] - a[1])
+            .map(entry => entry[0]);
+
+        orderedCategories.unshift("Recientes");
+        orderedCategories.push("Todos");
+
+        return orderedCategories;
+    }
+
+    function renderFilters() {
+        if (!projectsFilter) return;
+
+        const categories = getCategories();
+
+        projectsFilter.innerHTML = categories.map(category => `
+            <button class="filter-btn ${category === currentFilter ? "active" : ""}" data-category="${category}">
+                ${category}
+            </button>
+        `).join("");
+
+        document.querySelectorAll(".filter-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                currentFilter = button.dataset.category;
+                renderFilters();
+                renderProjects();
+            });
+        });
+    }
+
+    // ── Proyectos filtrados ──────────────────────────────────────
+    function getFilteredProjects() {
+        if (currentFilter === "Todos") {
+            return {
+                featured: projects.filter(p => p.recent),
+                extra:    projects.filter(p => !p.recent)
+            };
+        }
+        if (currentFilter === "Recientes") {
+            return {
+                featured: projects.filter(p => p.recent),
+                extra:    []
+            };
+        }
         return {
-            featured: projects.filter(project => project.recent),
-            extra: projects.filter(project => !project.recent)
+            featured: projects.filter(p => !p.recent && p.category === currentFilter).slice(0, 4),
+            extra:    projects.filter(p => !p.recent && p.category === currentFilter).slice(4)
         };
     }
 
-    if (currentFilter === "Recientes") {
-        return {
-            featured: projects.filter(project => project.recent),
-            extra: []
-        };
-    }
+    // ── Render de cada tarjeta ───────────────────────────────────
+    function createProjectCard(project, projectIndex, blockKey) {
+        if (project.video && project.wide) {
+            return `
+                <article class="project-card project-card--wide reveal-card delay-${projectIndex % 4}">
+                    <div class="project-image">
+                        <video
+                            src="${project.video}"
+                            autoplay muted loop playsinline
+                            style="width:100%;height:100%;object-fit:cover;display:block;"
+                        ></video>
+                        <div class="project-overlay-soft"></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>${project.name}</h3>
+                        <div class="project-meta">
+                            <span class="project-tag">${project.category}</span>
+                            <span class="project-tag">${project.location}</span>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
 
-    return {
-        featured: projects.filter(project => !project.recent && project.category === currentFilter).slice(0, 4),
-        extra: projects.filter(project => !project.recent && project.category === currentFilter).slice(4)
-    };
-}
-
-function createProjectCard(project, projectIndex, blockKey) {
-    // Tarjeta de VIDEO WIDE (ocupa 2 columnas)
-    if (project.video && project.wide) {
         return `
-            <article class="project-card project-card--wide reveal-card delay-${projectIndex % 4}">
+            <article class="project-card reveal-card delay-${projectIndex % 4}">
                 <div class="project-image">
-                    <video
-                        src="${project.video}"
-                        autoplay
-                        muted
-                        loop
-                        playsinline
-                        style="width:100%;height:100%;object-fit:cover;display:block;"
-                    ></video>
+                    <div class="project-slides" id="slides-${blockKey}-${projectIndex}">
+                        ${project.images.map((image, imageIndex) => `
+                            <div class="project-slide ${imageIndex === 0 ? "active" : ""}">
+                                <img src="${image}" alt="${project.name} - imagen ${imageIndex + 1}" loading="lazy">
+                            </div>
+                        `).join("")}
+                    </div>
+
+                    ${project.images.length > 1 ? `
+                        <button class="project-arrow project-arrow-prev"
+                            data-block="${blockKey}" data-project="${projectIndex}" data-direction="prev"
+                            aria-label="Imagen anterior" type="button">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="project-arrow project-arrow-next"
+                            data-block="${blockKey}" data-project="${projectIndex}" data-direction="next"
+                            aria-label="Imagen siguiente" type="button">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                    ` : ""}
+
                     <div class="project-overlay-soft"></div>
+
+                    <div class="project-dots" id="dots-${blockKey}-${projectIndex}">
+                        ${project.images.map((_, imageIndex) => `
+                            <span class="project-dot ${imageIndex === 0 ? "active" : ""}"></span>
+                        `).join("")}
+                    </div>
                 </div>
+
                 <div class="project-info">
                     <h3>${project.name}</h3>
                     <div class="project-meta">
@@ -472,235 +596,190 @@ function createProjectCard(project, projectIndex, blockKey) {
         `;
     }
 
-    // Tarjeta normal con imágenes
-    return `
-        <article class="project-card reveal-card delay-${projectIndex % 4}">
-            <div class="project-image">
-                <div class="project-slides" id="slides-${blockKey}-${projectIndex}">
-                    ${project.images.map((image, imageIndex) => `
-                        <div class="project-slide ${imageIndex === 0 ? "active" : ""}">
-                            <img src="${image}" alt="${project.name} - imagen ${imageIndex + 1}" loading="lazy">
-                        </div>
-                    `).join("")}
-                </div>
-
-                ${project.images.length > 1 ? `
-                    <button class="project-arrow project-arrow-prev" data-block="${blockKey}" data-project="${projectIndex}" data-direction="prev" aria-label="Imagen anterior">
-                        <i class="bi bi-chevron-left"></i>
-                    </button>
-                    <button class="project-arrow project-arrow-next" data-block="${blockKey}" data-project="${projectIndex}" data-direction="next" aria-label="Imagen siguiente">
-                        <i class="bi bi-chevron-right"></i>
-                    </button>
-                ` : ""}
-
-                <div class="project-overlay-soft"></div>
-
-                <div class="project-dots" id="dots-${blockKey}-${projectIndex}">
-                    ${project.images.map((_, imageIndex) => `
-                        <span class="project-dot ${imageIndex === 0 ? "active" : ""}"></span>
-                    `).join("")}
-                </div>
-            </div>
-
-            <div class="project-info">
-                <h3>${project.name}</h3>
-                <div class="project-meta">
-                    <span class="project-tag">${project.category}</span>
-                    <span class="project-tag">${project.location}</span>
-                </div>
-            </div>
-        </article>
-    `;
-}
-
-/* Projects */
-function renderProjects() {
-    sliderIntervals.forEach(interval => clearInterval(interval));
-    sliderIntervals.length = 0;
-
-    const filtered = getFilteredProjects();
-
-    projectsGrid.innerHTML = filtered.featured
-        .map((project, projectIndex) => createProjectCard(project, projectIndex, "main"))
-        .join("");
-
-    extraProjectsGrid.innerHTML = filtered.extra
-        .map((project, projectIndex) => createProjectCard(project, projectIndex, "extra"))
-        .join("");
-
-    if (filtered.extra.length === 0) {
-        toggleProjectsBtn.style.display = "none";
-        extraProjectsGrid.classList.remove("active");
-        toggleProjectsBtn.classList.remove("active");
-    } else {
-        toggleProjectsBtn.style.display = "inline-flex";
-        extraProjectsGrid.classList.remove("active");
-        toggleProjectsBtn.classList.remove("active");
-        toggleProjectsBtn.innerHTML = `<span>Ver más proyectos</span><i class="bi bi-chevron-down"></i>`;
-    }
-
-    initProjectArrows(filtered.featured, "main");
-    initProjectArrows(filtered.extra, "extra");
-    startAllSliders(filtered.featured, "main");
-    startAllSliders(filtered.extra, "extra");
-    revealProjectCards();
-}
-
-function initProjectArrows(projectsList, blockKey) {
-    document.querySelectorAll(`.project-arrow[data-block="${blockKey}"]`).forEach(button => {
-        button.addEventListener("click", () => {
-            const projectIndex = Number(button.dataset.project);
-            const direction = button.dataset.direction;
-            moveSlide(projectIndex, direction === "next" ? 1 : -1, projectsList, blockKey);
-        });
-    });
-}
-
-function moveSlide(projectIndex, step, projectsList, blockKey) {
-    const project = projectsList[projectIndex];
-    if (!project) return;
-
-    const slidesContainer = document.getElementById(`slides-${blockKey}-${projectIndex}`);
-    const dotsContainer = document.getElementById(`dots-${blockKey}-${projectIndex}`);
-
-    if (!slidesContainer || !dotsContainer) return;
-
-    const slides = slidesContainer.querySelectorAll(".project-slide");
-    const dots = dotsContainer.querySelectorAll(".project-dot");
-
-    const stateKey = `${blockKey}-${projectIndex}`;
-
-    if (sliderStates[stateKey] === undefined) {
-        sliderStates[stateKey] = 0;
-    }
-
-    slides[sliderStates[stateKey]].classList.remove("active");
-    dots[sliderStates[stateKey]].classList.remove("active");
-
-    sliderStates[stateKey] =
-        (sliderStates[stateKey] + step + slides.length) % slides.length;
-
-    slides[sliderStates[stateKey]].classList.add("active");
-    dots[sliderStates[stateKey]].classList.add("active");
-}
-
-function startAllSliders(projectsList, blockKey) {
-    projectsList.forEach((project, projectIndex) => {
-        if (project.video) return; // los videos no necesitan slider
+    // ── Slider manual (flechas) ──────────────────────────────────
+    function moveSlide(projectIndex, step, projectsList, blockKey) {
+        const project = projectsList[projectIndex];
+        if (!project) return;
 
         const slidesContainer = document.getElementById(`slides-${blockKey}-${projectIndex}`);
-        const dotsContainer = document.getElementById(`dots-${blockKey}-${projectIndex}`);
-
+        const dotsContainer   = document.getElementById(`dots-${blockKey}-${projectIndex}`);
         if (!slidesContainer || !dotsContainer) return;
 
-        const slides = slidesContainer.querySelectorAll(".project-slide");
-        const dots = dotsContainer.querySelectorAll(".project-dot");
-
-        if (slides.length <= 1) return;
-
+        const slides   = slidesContainer.querySelectorAll(".project-slide");
+        const dots     = dotsContainer.querySelectorAll(".project-dot");
         const stateKey = `${blockKey}-${projectIndex}`;
-        sliderStates[stateKey] = 0;
 
-        const interval = setInterval(() => {
-            slides[sliderStates[stateKey]].classList.remove("active");
-            dots[sliderStates[stateKey]].classList.remove("active");
+        if (sliderStates[stateKey] === undefined) sliderStates[stateKey] = 0;
 
-            sliderStates[stateKey] =
-                (sliderStates[stateKey] + 1) % slides.length;
+        slides[sliderStates[stateKey]].classList.remove("active");
+        dots[sliderStates[stateKey]].classList.remove("active");
 
-            slides[sliderStates[stateKey]].classList.add("active");
-            dots[sliderStates[stateKey]].classList.add("active");
-        }, 5000);
+        sliderStates[stateKey] = (sliderStates[stateKey] + step + slides.length) % slides.length;
 
-        sliderIntervals.push(interval);
-    });
-}
+        slides[sliderStates[stateKey]].classList.add("active");
+        dots[sliderStates[stateKey]].classList.add("active");
+    }
 
-/* Toggle more projects */
-if (toggleProjectsBtn && extraProjectsGrid) {
-    toggleProjectsBtn.addEventListener("click", () => {
-        extraProjectsGrid.classList.toggle("active");
-        toggleProjectsBtn.classList.toggle("active");
+    function initProjectArrows(projectsList, blockKey) {
+        document.querySelectorAll(`.project-arrow[data-block="${blockKey}"]`).forEach(button => {
+            button.addEventListener("click", () => {
+                const projectIndex = Number(button.dataset.project);
+                const direction    = button.dataset.direction;
+                moveSlide(projectIndex, direction === "next" ? 1 : -1, projectsList, blockKey);
+            });
+        });
+    }
 
-        const isActive = extraProjectsGrid.classList.contains("active");
+    // ── Auto-slider ──────────────────────────────────────────────
+    function startAllSliders(projectsList, blockKey) {
+        projectsList.forEach((project, projectIndex) => {
+            if (project.video) return;
 
-        toggleProjectsBtn.innerHTML = isActive
-            ? `<span>Ocultar proyectos</span><i class="bi bi-chevron-down"></i>`
-            : `<span>Ver más proyectos</span><i class="bi bi-chevron-down"></i>`;
+            const slidesContainer = document.getElementById(`slides-${blockKey}-${projectIndex}`);
+            const dotsContainer   = document.getElementById(`dots-${blockKey}-${projectIndex}`);
+            if (!slidesContainer || !dotsContainer) return;
 
-        if (isActive) {
-            setTimeout(() => {
-                revealProjectCards();
-            }, 150);
+            const slides = slidesContainer.querySelectorAll(".project-slide");
+            const dots   = dotsContainer.querySelectorAll(".project-dot");
+            if (slides.length <= 1) return;
+
+            const stateKey = `${blockKey}-${projectIndex}`;
+            sliderStates[stateKey] = 0;
+
+            const interval = setInterval(() => {
+                slides[sliderStates[stateKey]].classList.remove("active");
+                dots[sliderStates[stateKey]].classList.remove("active");
+                sliderStates[stateKey] = (sliderStates[stateKey] + 1) % slides.length;
+                slides[sliderStates[stateKey]].classList.add("active");
+                dots[sliderStates[stateKey]].classList.add("active");
+            }, 5000);
+
+            sliderIntervals.push(interval);
+        });
+    }
+
+    // ── Reveal on scroll ────────────────────────────────────────
+    function revealOnScroll() {
+        document.querySelectorAll(".reveal-up").forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+                el.classList.add("visible");
+            }
+        });
+    }
+
+    function revealProjectCards() {
+        document.querySelectorAll(".project-card.reveal-card").forEach(card => {
+            if (card.getBoundingClientRect().top < window.innerHeight - 80) {
+                card.classList.add("visible");
+            }
+        });
+    }
+
+    // ── Render proyectos ─────────────────────────────────────────
+    function renderProjects() {
+        if (!projectsGrid || !extraProjectsGrid || !toggleProjectsBtn) return;
+
+        sliderIntervals.forEach(interval => clearInterval(interval));
+        sliderIntervals.length = 0;
+
+        const filtered = getFilteredProjects();
+
+        projectsGrid.innerHTML = filtered.featured
+            .map((project, projectIndex) => createProjectCard(project, projectIndex, "main"))
+            .join("");
+
+        extraProjectsGrid.innerHTML = filtered.extra
+            .map((project, projectIndex) => createProjectCard(project, projectIndex, "extra"))
+            .join("");
+
+        if (filtered.extra.length === 0) {
+            toggleProjectsBtn.style.display = "none";
+            extraProjectsGrid.classList.remove("active");
+            toggleProjectsBtn.classList.remove("active");
+        } else {
+            toggleProjectsBtn.style.display = "inline-flex";
+            extraProjectsGrid.classList.remove("active");
+            toggleProjectsBtn.classList.remove("active");
+            toggleProjectsBtn.innerHTML = `<span>Ver más proyectos</span><i class="bi bi-chevron-down"></i>`;
         }
-    });
-}
 
-/* Clients toggle */
-if (toggleClientsBtn && allClientsGrid) {
-    toggleClientsBtn.addEventListener("click", () => {
-        allClientsGrid.classList.toggle("active");
+        initProjectArrows(filtered.featured, "main");
+        initProjectArrows(filtered.extra, "extra");
+        startAllSliders(filtered.featured, "main");
+        startAllSliders(filtered.extra, "extra");
+        revealProjectCards();
+    }
 
-        toggleClientsBtn.textContent = allClientsGrid.classList.contains("active")
-            ? "Ocultar clientes"
-            : "Ver todos los clientes";
-    });
-}
+    // ── Toggle "ver más proyectos" ───────────────────────────────
+    if (toggleProjectsBtn && extraProjectsGrid) {
+        toggleProjectsBtn.addEventListener("click", () => {
+            extraProjectsGrid.classList.toggle("active");
+            toggleProjectsBtn.classList.toggle("active");
 
-/* Entrance animations */
-function revealOnScroll() {
-    document.querySelectorAll(".reveal-up").forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) {
-            el.classList.add("visible");
-        }
-    });
-}
+            const isActive = extraProjectsGrid.classList.contains("active");
+            toggleProjectsBtn.innerHTML = isActive
+                ? `<span>Ocultar proyectos</span><i class="bi bi-chevron-down"></i>`
+                : `<span>Ver más proyectos</span><i class="bi bi-chevron-down"></i>`;
 
-function revealProjectCards() {
-    const projectCards = document.querySelectorAll(".project-card.reveal-card");
+            if (isActive) {
+                setTimeout(() => revealProjectCards(), 150);
+            }
+        });
+    }
 
-    projectCards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) {
-            card.classList.add("visible");
-        }
-    });
-}
+    // ── Toggle clientes ──────────────────────────────────────────
+    if (toggleClientsBtn && allClientsGrid) {
+        toggleClientsBtn.addEventListener("click", () => {
+            allClientsGrid.classList.toggle("active");
+            toggleClientsBtn.textContent = allClientsGrid.classList.contains("active")
+                ? "Ocultar clientes"
+                : "Ver todos los clientes";
+        });
+    }
 
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
-window.addEventListener("scroll", revealProjectCards);
-window.addEventListener("load", revealProjectCards);
+    // ── Formulario de contacto → WhatsApp ────────────────────────
+    if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-/* Contact form */
-const contactForm = document.getElementById("contactForm");
+            const name    = document.getElementById("name").value.trim();
+            const email   = document.getElementById("email").value.trim();
+            const phone   = document.getElementById("phone").value.trim();
+            const message = document.getElementById("message").value.trim();
 
-if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        const whatsappMessage = `Hola, soy ${name}.
-Correo: ${email}
-Teléfono: ${phone || "No proporcionado"}
-
-Mensaje:
-${message}`;
+            const whatsappMessage = `Hola, soy ${name}.\nCorreo: ${email}\nTeléfono: ${phone || "No proporcionado"}\n\nMensaje:\n${message}`;
             const url = `https://wa.me/50372019807?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(url, "_blank");
-        this.reset();
+            window.open(url, "_blank");
+            this.reset();
+        });
+    }
+
+    // ── Eventos globales ─────────────────────────────────────────
+    window.addEventListener("scroll", updateNavbarScroll);
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("scroll", revealProjectCards);
+    window.addEventListener("load", () => {
+        syncNavbarHeight();
+        revealOnScroll();
+        revealProjectCards();
+        updateNavbarScroll();
     });
-    
-}
 
+    // ── Init ─────────────────────────────────────────────────────
+    renderFilters();
+    renderProjects();
+    revealOnScroll();
+    revealProjectCards();
+    updateNavbarScroll();
+    syncNavbarHeight();
+});
+
+// ── Footer: contacto rápido por WhatsApp ────────────────────────
 function sendFooterContact() {
-    const value = document.getElementById("footerContact").value.trim();
+    const input = document.getElementById("footerContact");
+    if (!input) return;
 
+    const value = input.value.trim();
     if (!value) {
         alert("Por favor ingrese su correo o teléfono.");
         return;
@@ -709,12 +788,5 @@ function sendFooterContact() {
     const message = `Hola, me gustaría que me contactaran para un proyecto.\nMi contacto: ${value}`;
     const url = `https://wa.me/50372019807?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
-
-    document.getElementById("footerContact").value = "";
+    input.value = "";
 }
-
-/* Init */
-renderFilters();
-renderProjects();
-revealOnScroll();
-revealProjectCards();
