@@ -790,3 +790,84 @@ function sendFooterContact() {
     window.open(url, "_blank");
     input.value = "";
 }
+
+/* ═══════════════════════════════════════════
+   NC1 LIGHTBOX
+═══════════════════════════════════════════ */
+(function () {
+    const gallery = document.getElementById('nc1Gallery');
+    const lightbox = document.getElementById('nc1Lightbox');
+    const lbImg = document.getElementById('nc1LbImg');
+    const lbClose = document.getElementById('nc1LbClose');
+    const lbPrev = document.getElementById('nc1LbPrev');
+    const lbNext = document.getElementById('nc1LbNext');
+    const lbCounter = document.getElementById('nc1LbCounter');
+
+    if (!gallery || !lightbox) return;
+
+    // Gather all gallery images (portada + gallery items)
+    const portadaWrap = document.querySelector('.nc1-portada-wrap');
+    let images = [];
+
+    // Collect gallery items
+    const galleryItems = gallery.querySelectorAll('.nc1-gallery-item img');
+
+    // Add portada
+    if (portadaWrap) {
+        const portadaImg = portadaWrap.querySelector('.nc1-portada-img');
+        if (portadaImg) images.push(portadaImg.src);
+    }
+    galleryItems.forEach(img => images.push(img.src));
+
+    let current = 0;
+
+    function openLightbox(index) {
+        current = index;
+        lbImg.src = images[current];
+        lbCounter.textContent = (current + 1) + ' / ' + images.length;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function showNext() {
+        current = (current + 1) % images.length;
+        lbImg.src = images[current];
+        lbCounter.textContent = (current + 1) + ' / ' + images.length;
+    }
+
+    function showPrev() {
+        current = (current - 1 + images.length) % images.length;
+        lbImg.src = images[current];
+        lbCounter.textContent = (current + 1) + ' / ' + images.length;
+    }
+
+    // Portada click
+    if (portadaWrap) {
+        portadaWrap.addEventListener('click', () => openLightbox(0));
+    }
+
+    // Gallery item clicks (offset by 1 since portada is index 0)
+    galleryItems.forEach((img, i) => {
+        img.parentElement.addEventListener('click', () => openLightbox(i + 1));
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', showPrev);
+    lbNext.addEventListener('click', showNext);
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'ArrowLeft') showPrev();
+    });
+})();
