@@ -60,7 +60,7 @@ const projects = [
         name: "Nivelación con Láser Rotativo",
         category: "Recientes",
         location: "El Salvador",
-        video: "assets/Videos/Laser.mp4",
+        video: "assets/Videos/Laser2.mp4",
         wide: true,
         recent: true
     },
