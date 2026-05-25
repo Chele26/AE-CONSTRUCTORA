@@ -64,6 +64,315 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
+    <!-- ── FIX HAMBURGER + ANIMACIONES GLOBALES ── -->
+    <style>
+
+    /* ════════════════════════════════════════════
+       FIX NAVBAR MÓVIL — hamburger siempre visible
+    ════════════════════════════════════════════ */
+    .nav-container {
+        position: relative;
+        z-index: 10;
+    }
+    /* El logo nunca puede tapar el hamburger */
+    .logo {
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: calc(100% - 64px); /* deja espacio fijo al hamburger */
+        overflow: hidden;
+    }
+    .hamburger {
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1100;
+        margin-left: auto; /* empuja al extremo derecho */
+    }
+    /* En pantallas pequeñas acortamos el texto del logo si hace falta */
+    @media (max-width: 420px) {
+        .logo-text { font-size: 0.62rem !important; letter-spacing: 0.02em !important; }
+        .logo img  { height: 32px !important; }
+        .logo      { gap: 0.35rem !important; }
+    }
+
+    /* ════════════════════════════════════════════
+       ANIMACIONES DE ENTRADA — scroll reveal mejorado
+       Clases extra que se suman a .reveal-up del JS
+    ════════════════════════════════════════════ */
+
+    /* Fade desde abajo (ya existe, la extendemos) */
+    .reveal-up {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.75s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* Fade desde izquierda */
+    .reveal-left {
+        opacity: 0;
+        transform: translateX(-36px);
+        transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.75s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    /* Fade desde derecha */
+    .reveal-right {
+        opacity: 0;
+        transform: translateX(36px);
+        transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.75s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* Zoom suave */
+    .reveal-scale {
+        opacity: 0;
+        transform: scale(0.93);
+        transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1),
+                    transform 0.75s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* ════════════════════════════════════════════
+       COUNTER ANIMADO — números del hero y about
+    ════════════════════════════════════════════ */
+    .stat-number, .about-card-n {
+        display: inline-block;
+    }
+
+    /* ════════════════════════════════════════════
+       HOVER MEJORADO — about cards
+    ════════════════════════════════════════════ */
+    .about-card {
+        transition: transform 0.38s cubic-bezier(0.4,0,0.2,1),
+                    box-shadow 0.38s ease,
+                    border-color 0.38s ease !important;
+        border-left: 3px solid transparent;
+    }
+    .about-card:hover {
+        border-left-color: var(--secondary-color) !important;
+        transform: translateY(-8px) translateX(4px) !important;
+    }
+
+    /* ════════════════════════════════════════════
+       HOVER MEJORADO — workflow steps
+    ════════════════════════════════════════════ */
+    .workflow-step {
+        position: relative;
+        overflow: hidden;
+    }
+    .workflow-step::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(212,175,55,0.06), transparent);
+        opacity: 0;
+        transition: opacity 0.4s;
+    }
+    .workflow-step:hover::before { opacity: 1; }
+
+    /* número que sube al hacer hover */
+    .workflow-number {
+        display: inline-flex;
+        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1),
+                    box-shadow 0.35s ease;
+    }
+    .workflow-step:hover .workflow-number {
+        transform: scale(1.1) rotate(-4deg);
+        box-shadow: 0 8px 24px rgba(212,175,55,0.3);
+    }
+
+    /* ════════════════════════════════════════════
+       HOVER MEJORADO — advantage cards
+    ════════════════════════════════════════════ */
+    .advantage-card {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.38s cubic-bezier(0.4,0,0.2,1),
+                    border-color 0.38s ease,
+                    background 0.38s ease !important;
+    }
+    .advantage-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .advantage-card:hover::after { transform: scaleX(1); }
+    .advantage-card:hover .advantage-icon {
+        transform: rotate(-6deg) scale(1.15);
+        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ════════════════════════════════════════════
+       HOVER MEJORADO — service cards
+    ════════════════════════════════════════════ */
+    .service-card {
+        position: relative;
+        overflow: hidden;
+    }
+    /* Shimmer sweep en service cards */
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: -40%; left: -70%;
+        width: 40%; height: 180%;
+        background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(255,255,255,0.04) 40%,
+            rgba(255,255,255,0.1) 50%,
+            rgba(255,255,255,0.04) 60%,
+            transparent 100%);
+        transform: skewX(-18deg);
+        opacity: 0;
+        pointer-events: none;
+    }
+    .service-card:hover::before {
+        animation: svcShimmer 0.7s ease forwards;
+    }
+    @keyframes svcShimmer {
+        0%   { left: -70%; opacity: 1; }
+        100% { left: 160%; opacity: 0; }
+    }
+    .service-card:hover .service-icon svg {
+        transform: scale(1.12) rotate(6deg);
+        transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+        filter: drop-shadow(0 0 8px rgba(212,175,55,0.5));
+    }
+
+    /* ════════════════════════════════════════════
+       HOVER MEJORADO — client feature cards
+    ════════════════════════════════════════════ */
+    .client-feature {
+        position: relative;
+        overflow: hidden;
+    }
+    .client-feature::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .client-feature:hover::after { transform: scaleX(1); }
+    .client-feature i {
+        transition: transform 0.38s cubic-bezier(0.4,0,0.2,1),
+                    color 0.3s;
+    }
+    .client-feature:hover i {
+        transform: scale(1.25) translateY(-3px);
+    }
+
+    /* ════════════════════════════════════════════
+       HOVER MEJORADO — project cards (intensifica)
+    ════════════════════════════════════════════ */
+    .project-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 2px solid transparent;
+        border-radius: 16px;
+        transition: border-color 0.38s;
+        pointer-events: none;
+    }
+    .project-card:hover::after {
+        border-color: rgba(212,175,55,0.35);
+    }
+
+    /* ════════════════════════════════════════════
+       HOVER MEJORADO — footer social links
+    ════════════════════════════════════════════ */
+    .footer-social-link {
+        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1),
+                    background 0.3s,
+                    border-color 0.3s,
+                    color 0.3s !important;
+    }
+    .footer-social-link:hover {
+        transform: translateY(-4px) scale(1.12) !important;
+    }
+
+    /* ════════════════════════════════════════════
+       HERO — stat numbers count-up shimmer
+    ════════════════════════════════════════════ */
+    .stat-number {
+        position: relative;
+        display: inline-block;
+    }
+    .stat-number::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent 40%, rgba(255,255,255,0.18) 55%, transparent 70%);
+        background-size: 200% auto;
+        animation: statShine 3.5s linear infinite;
+        pointer-events: none;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+    @keyframes statShine {
+        0%   { background-position: -100% center; }
+        100% { background-position: 300% center; }
+    }
+
+    /* ════════════════════════════════════════════
+       NC1 — portada parallax leve
+    ════════════════════════════════════════════ */
+    .nc1-portada-img {
+        transition: transform 0.7s cubic-bezier(0.4,0,0.2,1),
+                    filter 0.5s !important;
+    }
+    .nc1-portada-wrap:hover .nc1-portada-img {
+        transform: scale(1.05) !important;
+        filter: brightness(1.05) saturate(1.1) !important;
+    }
+
+    /* ════════════════════════════════════════════
+       CTA BUTTON — pulso continuo suave
+    ════════════════════════════════════════════ */
+    .cta-button {
+        animation: ctaPulse 3s ease-in-out infinite !important;
+    }
+    @keyframes ctaPulse {
+        0%, 100% { box-shadow: 0 10px 30px rgba(212,175,55,0.22); }
+        50%       { box-shadow: 0 10px 40px rgba(212,175,55,0.42), 0 0 0 6px rgba(212,175,55,0.08); }
+    }
+
+    /* ════════════════════════════════════════════
+       SECTION TITLE — underline que crece al entrar
+    ════════════════════════════════════════════ */
+    .section-title::after {
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.6s cubic-bezier(0.4,0,0.2,1) 0.2s;
+    }
+    .section-header.visible .section-title::after,
+    .visible .section-title::after {
+        transform: scaleX(1);
+    }
+    /* Disparar también cuando el padre .section-header se vuelve visible */
+    .section-header .section-title::after {
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.6s cubic-bezier(0.4,0,0.2,1) 0.3s;
+    }
+    .about .section-header .section-title::after,
+    .projects .section-header .section-title::after,
+    .clients .section-header .section-title::after {
+        transform: scaleX(1); /* siempre visible en secciones claras */
+    }
+
+    </style>
+
     <!-- ── Empresas Asociadas: rediseño premium oscuro ── -->
     <style>
 
@@ -491,7 +800,7 @@
             </div>
 
             <div class="about-grid">
-                <div class="about-card reveal-up">
+                <div class="about-card reveal-left">
                     <div class="about-icon"><i class="bi bi-buildings"></i></div>
                     <h3>Quiénes somos</h3>
                     <p>Somos una empresa 100% salvadoreña especializada en <strong>instalación de piso pulido</strong>,
@@ -500,7 +809,7 @@
                         ofrecer soluciones eficientes, precisas y de alta calidad en cada proyecto.</p>
                 </div>
 
-                <div class="about-card reveal-up delay-1">
+                <div class="about-card reveal-scale delay-1">
                     <div class="about-icon"><i class="bi bi-bullseye"></i></div>
                     <h3>Enfoque técnico</h3>
                     <p>Como parte de nuestro enfoque técnico, utilizamos equipos de nivelación láser rotativo que
@@ -508,7 +817,7 @@
                         apoyando el proceso constructivo con mayor control y uniformidad.</p>
                 </div>
 
-                <div class="about-card reveal-up delay-2">
+                <div class="about-card reveal-right delay-2">
                     <div class="about-icon"><i class="bi bi-award"></i></div>
                     <h3>Compromiso de calidad</h3>
                     <p>Contamos con personal capacitado y especializado en el uso de tecnologías modernas, así como con
@@ -612,7 +921,7 @@
             </div>
 
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card reveal-left">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
                             <circle cx="12" cy="12" r="9"></circle>
@@ -624,7 +933,7 @@
                     <p>Instalación y pulido de piso con acabados de alto brillo. Especialistas en pisos en pulidos para uso industrial, comercial y residencial.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card reveal-up delay-1">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
                             <rect x="4" y="4" width="16" height="16"></rect>
@@ -635,7 +944,7 @@
                     <p>Superficies elegantes y funcionales, ideales para áreas con tráfico medio y alto.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card reveal-right delay-1">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
                             <path d="M4 18l8-12 8 12"></path>
@@ -645,7 +954,7 @@
                     <p>Texturas antideslizantes y seguras para exteriores, rampas y zonas industriales.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card reveal-left delay-2">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
                             <path d="M4 12h16"></path>
@@ -657,7 +966,7 @@
                     <p>Definición técnica de líneas, juntas y cortes para mejor comportamiento del concreto.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card reveal-up delay-2">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
                             <path d="M5 19h14"></path>
@@ -669,7 +978,7 @@
                     <p>Nivelación y preparación de superficies para restauración o aplicación de nuevos acabados.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card reveal-right delay-2">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
                             <path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5-5-2.6-5 2.6 1-5.5-4-3.9 5.5-.8L12 3z"></path>
@@ -1053,6 +1362,83 @@
     </footer>
 
     <script src="js/app.js"></script>
-</body>
+
+    <!-- ── Animaciones extra: nuevas clases reveal + count-up ── -->
+    <script>
+    (function () {
+
+        /* 1. Observer para reveal-left / reveal-right / reveal-scale */
+        const extraObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    extraObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal-left, .reveal-right, .reveal-scale')
+            .forEach(el => extraObs.observe(el));
+
+        /* 2. Count-up animado para .stat-number */
+        function countUp(el) {
+            const raw  = el.textContent.trim();            // e.g. "15+", "1000+", "100%"
+            const num  = parseFloat(raw.replace(/[^0-9.]/g, ''));
+            const suffix = raw.replace(/[0-9.]/g, '');     // "+", "%", etc.
+            if (isNaN(num)) return;
+
+            const duration = 1600;
+            const start    = performance.now();
+
+            function frame(now) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                // ease-out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(eased * num);
+                el.textContent = current.toLocaleString() + suffix;
+                if (progress < 1) requestAnimationFrame(frame);
+                else el.textContent = num.toLocaleString() + suffix;
+            }
+            requestAnimationFrame(frame);
+        }
+
+        const countObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    countUp(e.target);
+                    countObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number')
+            .forEach(el => countObs.observe(el));
+
+        /* 3. Parallax muy leve en el hero al hacer scroll */
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            window.addEventListener('scroll', () => {
+                const y = window.scrollY;
+                heroContent.style.transform = `translateY(${y * 0.18}px)`;
+                heroContent.style.opacity   = Math.max(1 - y / 500, 0);
+            }, { passive: true });
+        }
+
+        /* 4. Animar el section-header underline al entrar al viewport */
+        const headerObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    headerObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.section-header')
+            .forEach(el => headerObs.observe(el));
+
+    })();
+    </script>
 
 </html>
